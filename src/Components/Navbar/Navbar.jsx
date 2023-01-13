@@ -2,7 +2,7 @@ import React from 'react'
 
 export const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-md navbar-dark navbar-dark bg-dark shadow">
+    <nav className="navbar navbar-expand-md navbar-dark navbar-dark bg-dark shadow fixed-top">
         <a href="/" className="navbar-brand fs-2"> SULTAN TEPIH</a>
         <button className="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar_main">
             <span className="navbar-toggler-icon"></span>

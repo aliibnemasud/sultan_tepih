@@ -24,11 +24,12 @@ a:hover {
     opacity: 0.9;
     position: relative;
     vertical-align: top;
-    transition: 0.4s;
-    transition-property: opacity;
+    transition: all 1s ease-in;
    }
    .cards:hover img {
     opacity: 1;
+    transform: scale(2);
+
    }
    .card-details {
     background: rgba(255, 255, 255, 0.7);
@@ -44,6 +45,7 @@ a:hover {
    .cards:hover .card-details{
     bottom: 0;
    }
+
    .name-code a   {
     /* font-size: 22px; */
     /* font-weight: 500; */
