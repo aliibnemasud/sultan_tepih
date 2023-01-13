@@ -1,0 +1,21 @@
+.form-table .form-control {
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 20px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: none;
+  /* background: none; */
+  width: 100%;
+  height: 55px;
+  margin: .3rem;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 200;
+  padding: 10px 33px;
+  border-color: #383838;
+  color: #000;
+}
+#bodyBg {
+    background: linear-gradient(0deg, #ffffffaa, #ffffffaa) ,url("../../../public/img/bodyBg.png");
+}

@@ -1,0 +1,14 @@
+figure {
+    display: flex;
+    /* background-origin: #ffffff; */
+}
+figure:hover .productImg {
+  opacity: 0;
+  display: flex;
+}
+
+.productImg {
+  display: block;
+  width: 100%;
+  pointer-events: none;
+}
