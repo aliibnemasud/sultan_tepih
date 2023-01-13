@@ -1,7 +1,8 @@
 import React, { useCallback, useRef } from 'react'
 import { useEffect, useState } from 'react' 
 import { ProductCard } from '../../Components/ProductCard/ProductCard';
-import MultiRangeSlider from '../../Components/MultiRangeSlider/MultiRangeSlider'
+import MultiRangeSlider from '../../Components/MultiRangeSlider/MultiRangeSlider';
+import Sidebar from './SideBar';
 export const Products = ({category, collection}) => {
   const [products, setProducts] = useState(null);
   const [productCount, setProductCount] = useState(0);
@@ -282,7 +283,7 @@ export const Products = ({category, collection}) => {
                 return false;
             }
         }
-    }; 
+    };
 
     const handleCollectionChange = (e) => {
         if(e.target.checked === true) {
@@ -385,8 +386,10 @@ export const Products = ({category, collection}) => {
     );
 
   return (
-    <>
+    <div>
+        <Sidebar/>
         <div className="col-12 row mt-4 text-start ps-lg-2 ps-md-1 ps-0 me-0">
+
             <div className="col-12 col-md-2 border-end mt-5 ps-lg-4 ps-md-1 ps-sm-5 ps-4"> 
                 {/* <!-- CATEGORY  --> */}
                 <div>
@@ -590,13 +593,14 @@ export const Products = ({category, collection}) => {
                 {/* </div> */}
                 <button type="button" className="btn btn-danger" onClick={filterProducts}>Filtriraj</button>
             </div>
+
             <div className="col-md-10 pe-0">  
                 <h3 className="text-start">Svi Proizvodi</h3>
                 <div className="d-flex justify-content-between ps-3">
                     <span className="text-muted">{productCount} Proizvoda</span>
                     <select className="form-select w-25 me-4" aria-label="Default select example" id="sorting" onChange={() =>sortProducts()}>
                         <option defaultValue value="0" onClick={() =>sortProducts()}>Najnoviji Proizvodi</option>
-                        <option value="1" onClick={() =>sortProducts()}>Najstariji Proizvodi</option>
+                        <option value="1" onClick={() => sortProducts()}>Najstariji Proizvodi</option>
                         {/* <option value="2" onClick={() =>sortProducts()}>Najniža Cijena</option>
                         <option value="3" onClick={() =>sortProducts()}>Najviša Cijena</option> */}
                         {/* <option value="3">Most Sellers</option>
@@ -623,6 +627,6 @@ export const Products = ({category, collection}) => {
                 </div>
             </div>
         </div>
-    </>
+    </div>
   )
 }

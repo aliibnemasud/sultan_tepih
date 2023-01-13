@@ -13,8 +13,7 @@ export const Home = () => {
   return (
     <div>
       {/* <Thumbnail /> */}      
-      <Slider />
-      
+      <Slider />      
       {/* <section className="mb-2" id="main-beginning">
         <div className="col-12 row gx-0">
           <div className="col-6" id="main-beginning-left"></div>
