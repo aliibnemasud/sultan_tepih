@@ -1,0 +1,53 @@
+body{    
+    overflow-x: hidden;
+}
+
+.vertical-nav {
+    min-width: 17rem;
+    width: 17rem;    
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: all 0.5s;
+    
+    margin-top: 5%;
+}
+
+.page-content {
+    width: calc(100% - 17rem);
+    margin-left: 17rem;
+    transition: all 0.5s;
+}
+
+#sidebar.active{
+    margin-left: -17rem;    
+}
+
+#content.active {
+    width: 100%;
+    margin: 0;
+}
+
+.bg-color {
+    background-color: rgb(235, 235, 235);
+}
+
+
+
+@media (max-width: 768px){
+    #sidebar {
+        margin-left: -17rem;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+    #content {
+        width: 100%;
+        margin: 0;
+    }
+    #content.active{
+        margin-left: 17rem;
+        width: calc(100% - 17rem);
+    }
+}

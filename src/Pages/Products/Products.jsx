@@ -386,8 +386,7 @@ export const Products = ({category, collection}) => {
     );
 
   return (
-    <div>
-        <Sidebar/>
+    <div>        
         <div className="col-12 row mt-4 text-start ps-lg-2 ps-md-1 ps-0 me-0">
 
             <div className="col-12 col-md-2 border-end mt-5 ps-lg-4 ps-md-1 ps-sm-5 ps-4"> 

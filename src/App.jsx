@@ -7,17 +7,19 @@ import { Contact } from "./Pages/Contact/Contact";
 import { Products } from "./Pages/Products/Products";
 import { BrowserRouter as Switch, Routes, Route } from "react-router-dom";
 import { ProductDetails } from "./Pages/ProductDetails/ProductDetails";
+import ProductPage from "./Pages/Products/ProductPage";
 
 function App() {
   return (
     <div className="App">
-      {/* <Navbar /> */}
+      <Navbar />
       <div className="space"></div>
       <Switch>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/shop" element={<ProductPage/>} />
           <Route
             path="/products"
             element={<Products category={""} collection={""} />}
