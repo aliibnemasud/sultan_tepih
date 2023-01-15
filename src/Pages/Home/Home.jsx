@@ -11,7 +11,7 @@ import Slider from "../../Components/Slider/Slider";
 
 export const Home = () => {
   return (
-    <div>
+    <div className="bg-image">
       {/* <Thumbnail /> */}      
       <Slider />      
       {/* <section className="mb-2" id="main-beginning">
