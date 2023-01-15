@@ -20,9 +20,13 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/shop" element={<ProductPage/>} />
-          <Route
+          {/* <Route
             path="/products"
             element={<Products category={""} collection={""} />}
+          /> */}
+          <Route
+            path="/products"
+            element={<ProductPage/>}
           />
           {/* Product category */}
           <Route

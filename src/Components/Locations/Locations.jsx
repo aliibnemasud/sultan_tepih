@@ -3,10 +3,10 @@ import { LocationCard } from './LocationCard'
 
 export const Locations = () => {
   return (
-    <div className="container mt-5 text-center">
+    <div className="container mt-5 text-center py-5">
           <div className="row " id="location-set">
               <div className="col-lg-6">
-                  <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1xTQm3nX2VkM0RP9C6BwchII1leflieQ&ehbc=2E312F" width="100%" height="580px" ></iframe>
+                  <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1xTQm3nX2VkM0RP9C6BwchII1leflieQ&ehbc=2E312F" width="100%" height="400px" ></iframe>
               </div>
               <div className="col-lg-6 d-flex justify-content-center align-items-center flex-column "> 
                   <div className="col-2 w-100">

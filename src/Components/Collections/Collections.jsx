@@ -2,7 +2,7 @@ import React from 'react'
 
 export const Collections = () => {
   return (
-        <div className="d-flex flex-row flex-wrap justify-content-center col-10 p-0 m-auto" >
+        <div className="d-flex flex-row flex-wrap justify-content-center col-11 p-0 m-auto" >
             <div className="m-2 flex-column col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
                 <div className="col-12 collection-bg-home d-flex p-0 mb-3" id="collection-1">
                     <span>COLLECTION 1</span>

@@ -5,7 +5,7 @@ export const ProductCard = ({id, price, title, desc, img, colors, category, coll
     
   return (
       <div className="col-12 col-md-4 col-lg-3 mb-3">
-          <a href='#' /* href={`/product-details/${id}`} */ className="cards d-flex shadow">
+          <a href='#' /* href={`/product-details/${id}`} */ className="cards d-flex shadow align-items-center">
               <img src={img[0]} className="img-fluid" alt="" />
               <div className="card-details d-flex flex-row flex-wrap align-content-center">
                   <a href={`/product-details/${id}`} className="px-3 m-0"><i className="fa fa-info-circle"></i></a>
@@ -14,7 +14,7 @@ export const ProductCard = ({id, price, title, desc, img, colors, category, coll
                   <button onClick={() => {
                     setModalProductData(img[0])
                     setShowImage(true)
-                  }} className="px-3 ms-auto"><i className="fa fa-search-plus"></i></button>
+                  }} className="px-3 ms-auto btn"><i className="fa fa-eye"></i></button>
 
                   <span className="d-flex flex-row flex-wrap fs-5 align-items-end">Boje: {colors?.map((color, index) =>{
                     return (<span key={index} className="rounded-circle ms-1 mb-2" style={{"color": color,"background": color, "width": "15px", "height": "15px"}}></span>);

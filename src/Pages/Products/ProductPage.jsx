@@ -1,7 +1,8 @@
 import axios from "axios";
 import React from "react";
 import { useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
+import { FaArrowLeft, FaArrowRight, FaList } from "react-icons/fa";
 import { useQuery } from "react-query";
 import { ProductCard } from "../../Components/ProductCard/ProductCard";
 import ProductPopup from "./ProductPopup";
@@ -15,7 +16,7 @@ const ProductPage = () => {
   const [page, setPage] = useState(1);
   const [size, setSize] = useState(5);
   const [showImage, setShowImage] = useState(false);
-  const [modalProductData, setModalProductData] = useState('');
+  const [modalProductData, setModalProductData] = useState("");
 
   const totalProducts = products?.length;
   const pageCount = Math.ceil(totalProducts / 5);
@@ -56,12 +57,18 @@ const ProductPage = () => {
     }
   };
 
+  const selectFilter = () => {};
+
+  let loadProducts = [];
+
+  const setSizefilter = () => {};
+
   return (
     <div>
-      <aside class={`vertical-nav ${toggleBar} px-3`} id="sidebar">
+      <aside class={`vertical-nav ${toggleBar} px-3 border-right`} id="sidebar">
         {/* <!-- CATEGORY  --> */}
         <div>
-          <h4 className="mb-2 mt-4">Kategorije {filterContent?.category.length}</h4>
+          <h4 className="mb-2 mt-5">Kategorije</h4>
           {filterContent?.category?.map((cat) => {
             return (
               <div className="form-check">
@@ -88,7 +95,7 @@ const ProductPage = () => {
               </div>
             );
           })}
-          ;
+          
         </div>
 
         <div className="checkbox">
@@ -129,41 +136,52 @@ const ProductPage = () => {
         </button>
       </aside>
 
-      <section class={`page-content p-5 ${toggleBar}`} id="content">
-        <button onClick={sidebarCollapse} type="button" class="btn btn-primary mb-3">
-          Toggle Sidebar
-        </button>
-
-        <Button variant="primary" onClick={() => setShowImage(true)}>
-          Launch vertically centered modal
-        </Button>
-
+      <section class={`page-content p-3 ${toggleBar}`} id="content">
         <ProductPopup show={showImage} modalProductData={modalProductData} onHide={() => setShowImage(false)} />
 
-        <section className="bg-color d-flex justify-content-between px-3 py-3">
-          <div>
-            <h1>Svi Proizvodi</h1>
-            <p>{currentProducts?.length} Proizvoda</p>
+        <div className="d-flex justify-content-between align-items-center p-3">
+          <div className="d-flex gap-3">
+            <div>
+              <button onClick={sidebarCollapse} type="button" class="btn mb-3">                
+                {toggleBar == 'active' ? <FaArrowRight className="text-primary fw-bold"/> : <FaArrowLeft className="text-primary fw-bold"/>
+                }
+              </button>
+            </div>
+            <div>
+              <h2>Svi Proizvodi</h2>
+              <p className="text-primary fw-bold">{currentProducts?.length} Proizvoda</p>
+            </div>
           </div>
 
-          <select className="form-select w-25" aria-label="Default select example" id="sorting">
-            <option defaultValue value="0">
-              Najnoviji Proizvodi
-            </option>
-            <option value="1">Najstariji Proizvodi</option>
-          </select>
-        </section>
+          <div className="d-flex gap-2">
+            <Form.Select onChange={selectFilter} aria-label="sorting by date">
+              {filterContent.color.map((color) => (
+                <option value={color?.name}>{color?.name}</option>
+              ))}
+            </Form.Select>
+
+            <Form.Select onChange={selectFilter} aria-label="sorting by date">
+              {filterContent.size.map((size) => (
+                <option value={size}>{size}</option>
+              ))}
+            </Form.Select>
+
+            <Form.Select onChange={selectFilter} aria-label="sorting by size">
+              <option value="latestProducts">Najnoviji Proizvodi</option>
+              <option value="oldestProducts">Najstariji Proizvodi</option>
+            </Form.Select>
+          </div>
+        </div>
 
         {/* products */}
 
-        <section className="products row py-5">
+        <section className="products row py-2">
           {currentProducts
             ? currentProducts?.map((product) => {
                 return (
                   <ProductCard
                     setShowImage={setShowImage}
                     setModalProductData={setModalProductData}
-
                     key={product.id}
                     id={product.id}
                     price={product.price}

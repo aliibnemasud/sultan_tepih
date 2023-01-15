@@ -1,25 +1,30 @@
 import React from 'react'
+import { FaCartPlus, FaTruck, FaCartShopping, FaCoins, FaHeadset } from "react-icons/fa";
 
 export const Services = () => {
   return (
     <div className="col-12 p-3 row text-white mt-4 mb-4 pb-4 pt-4 me-0 ms-0 gx-3">
             <div className="col-md-3  d-flex flex-column align-items-center text-center my-2  bg-dark">
-                <i className="fa-solid fa-truck-fast h1 golden-text mt-3"></i>
+                {/* <i className="fa-solid fa-truck-fast h1 golden-text mt-3"></i> */}
+                <FaTruck className='h1 golden-text mt-3'/>
                 <h5 className="mt-2">Fast Shipping</h5>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero, autem?</p>
             </div>
             <div className="col-md-3 d-flex flex-column align-items-center text-center my-2 bg-dark">
-                <i className="fa-solid fa-cart-shopping h1 golden-text mt-3"></i>    
+                {/* <i className="fa-solid fa-cart-shopping h1 golden-text mt-3"></i> */}
+                <FaCartPlus className='h1 golden-text mt-3'/>                    
                 <h5 className="mt-2"> Modern Designs</h5>   
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero, autem?</p>   
             </div>
             <div className="col-md-3 d-flex flex-column align-items-center text-center my-2 bg-dark">
-                <i className="fa-solid fa-coins h1 golden-text mt-3"></i>
+                {/* <i className="fa-solid fa-coins h1 golden-text mt-3"></i> */}
+                <FaCoins className='h1 golden-text mt-3'/>
                 <h5 className="mt-2">Save Money</h5>      
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero, autem?</p>          
             </div>
             <div className="col-md-3 d-flex flex-column align-items-center text-center my-2 bg-dark p-3">
-                <i className="fa-solid fa-headset h1 golden-text mt-3"></i>
+                {/* <i className="fa-solid fa-headset h1 golden-text mt-3"></i> */}
+                <FaHeadset className='h1 golden-text mt-3'/>
                 <h5 className="mt-2">Customer Support</h5>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero, autem?</p>
             </div>

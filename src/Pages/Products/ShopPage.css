@@ -10,6 +10,7 @@ body{
     top: 0;
     left: 0;
     transition: all 0.5s;
+    border-right: 1px dotted;
     
     margin-top: 5%;
 }
@@ -30,9 +31,8 @@ body{
 }
 
 .bg-color {
-    background-color: rgb(235, 235, 235);
+    background-color: rgb(224, 224, 224);    
 }
-
 
 
 @media (max-width: 768px){

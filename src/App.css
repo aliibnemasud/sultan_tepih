@@ -1,5 +1,5 @@
 .App {
-  
+  font-family: 'Poppins', sans-serif;
 }
 
 .space {
@@ -9,8 +9,6 @@
 .margin-top{
   margin-top: 2%;
 }
-
-
 
 .App-logo {
   height: 40vmin;

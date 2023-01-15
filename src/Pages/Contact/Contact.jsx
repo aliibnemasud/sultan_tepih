@@ -11,7 +11,7 @@ export const Contact = () => {
     <div id="bodyBg">
       <SmallThumbnail img={"./img/landing-carpet.jpg"}/>
 
-      <form className="container text-start rounded p-2 mt-2 border" onSubmit={handleSubmit} style={{"background": "white"}}>
+      <form className="container text-start rounded p-5 my-5 border rounded" onSubmit={handleSubmit} style={{"background": "white"}}>
         <div className="form-table mt-3">
           <div className="container">
               <div className="col-xs-12 pb-3">

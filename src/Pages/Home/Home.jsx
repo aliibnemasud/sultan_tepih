@@ -4,7 +4,6 @@ import { Thumbnail } from "../../Components/Thumbnail/Thumbnail";
 import { Locations } from "../../Components/Locations/Locations";
 import { Collections } from "../../Components/Collections/Collections";
 import { Services } from "../../Components/Services/Services";
-import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { ProductSlider } from "../../Components/ProductSlider/ProductSlider";
 import Slider from "../../Components/Slider/Slider";
