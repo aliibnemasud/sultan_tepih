@@ -11,6 +11,8 @@ body{
     left: 0;
     transition: all 0.5s;
     border-right: 1px dotted;
+    overflow-y: scroll;    
+    padding-bottom: 5rem;
     
     margin-top: 5%;
 }
@@ -50,4 +52,14 @@ body{
         margin-left: 17rem;
         width: calc(100% - 17rem);
     }
+}
+
+.productNew {
+    overflow-y: scroll;
+    height: 100vh;
+}
+
+.sideBarNew {
+    height: 100vh;
+    overflow-y: scroll;
 }

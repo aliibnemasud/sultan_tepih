@@ -8,6 +8,7 @@ import { Products } from "./Pages/Products/Products";
 import { BrowserRouter as Switch, Routes, Route } from "react-router-dom";
 import { ProductDetails } from "./Pages/ProductDetails/ProductDetails";
 import ProductPage from "./Pages/Products/ProductPage";
+import NewProductPage from "./Pages/Products/NewProductPage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/shop" element={<ProductPage/>} />
+          <Route path="/shopnew" element={<NewProductPage/>} />
           {/* <Route
             path="/products"
             element={<Products category={""} collection={""} />}

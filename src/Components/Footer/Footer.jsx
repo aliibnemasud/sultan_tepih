@@ -2,7 +2,7 @@ import React from 'react'
 
 export const Footer = () => {
   return (
-    <footer>
+    <footer style={{backgroundColor: 'red'}} >
       <div className="row gx-0 bg-dark pt-5 pb-5" id="footer">
         <div className="col-4 d-flex align-items-center justify-content-center text-center" id="logo">
           <h1>SULTAN TEPIH</h1>
