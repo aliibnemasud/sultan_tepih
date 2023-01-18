@@ -8,6 +8,7 @@ import { useQuery } from "react-query";
 import axios from "axios";
 import { Form } from "react-bootstrap";
 import { ProductCard } from "../../Components/ProductCard/ProductCard";
+import NewProductCard from "./NewProductCard";
 
 const NewProductPage = () => {
   const [toggleBar, setToggleBar] = useState("");
@@ -23,7 +24,6 @@ const NewProductPage = () => {
   const pageCount = Math.ceil(totalProducts / 5);
 
   //  pagination
-
   const indexOfLastPost = page * size;
   const indexOfFirstPost = indexOfLastPost - size;
   const currentProducts = products?.slice(indexOfFirstPost, indexOfLastPost);
@@ -35,12 +35,23 @@ const NewProductPage = () => {
 
   if (isLoading) return <h1>Loading....</h1>;
 
+  // Toggle bar
   const sidebarCollapse = () => {
     if (toggleBar === "") {
       setToggleBar("active");
     } else {
       setToggleBar("");
     }
+  };
+
+  // Sort by price
+  const sortByPrice = () => {
+    let filterByPrice = products.sort((a, b) => a.price[0] - b.price[0]);
+    console.log(filterByPrice);
+
+    // Reverse
+    let reverseFilterByPrice = filterByPrice.reverse();
+    console.log(reverseFilterByPrice);
   };
 
   const selectFilter = () => {};
@@ -134,11 +145,20 @@ const NewProductPage = () => {
               </div>
             </div>
 
-            <div className="d-flex gap-2">
-              <Form.Select onChange={selectFilter} aria-label="sorting by size">
-                <option value="latestProducts">Najnoviji Proizvodi</option>
-                <option value="oldestProducts">Najstariji Proizvodi</option>
-              </Form.Select>
+            <div className="d-flex gap-1 flex-wrap">
+              <div className="d-flex gap-2">
+                <Form.Select onChange={sortByPrice} aria-label="sorting by size">
+                  <option value="lowToHigh">Price (Low to High)</option>
+                  <option value="highToLow">Price (High to Low)</option>
+                </Form.Select>
+              </div>
+
+              <div className="d-flex gap-2">
+                <Form.Select onChange={selectFilter} aria-label="sorting by size">
+                  <option value="latestProducts">Najnoviji Proizvodi</option>
+                  <option value="oldestProducts">Najstariji Proizvodi</option>
+                </Form.Select>
+              </div>
             </div>
           </div>
 
@@ -147,25 +167,9 @@ const NewProductPage = () => {
           <section className="products row py-2">
             {currentProducts
               ? currentProducts?.map((product) => {
-                  return (
-                    <ProductCard
-                      setShowImage={setShowImage}
-                      setModalProductData={setModalProductData}
-                      key={product.id}
-                      id={product.id}
-                      price={product.price}
-                      title={product.title}
-                      desc={product.desc}
-                      img={product.img}
-                      colors={product.colors}
-                      category={product.category}
-                      collection={product.collection}
-                      featured={product.featured}
-                      discount={product.discount}
-                      discountPrice={product.discountPrice}
-                      code={product.code}
-                    />
-                  );
+                
+                  return <NewProductCard product={product} setModalProductData={setModalProductData} setShowImage={setShowImage} />;
+
                 })
               : "Trenutno nemamo proizvode koje ste tražili"}
           </section>
