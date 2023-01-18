@@ -3,7 +3,7 @@ import { SmallThumbnail } from '../../Components/SmallThumbnail/SmallThumbnail'
 
 export const About = () => {
   return (
-    <div className='text-center'>
+    <div className='text-center bg-image'>
       <SmallThumbnail img={"./img/landing-carpet.jpg"}/>
 
       <div className="container mt-5 mb-5">

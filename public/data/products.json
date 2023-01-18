@@ -17,7 +17,7 @@
         "createdAt": "12.09.2022"
     },
     {
-        "id": "1",
+        "id": "2",
         "code": "OW1818",
         "price": ["429", "543", "458"], 
         "title": "drtfjdrtz", 
@@ -34,7 +34,7 @@
         "createdAt": "12.09.2022"
     },
     {
-        "id": "1",
+        "id": "3",
         "code": "OW1818",
         "price": ["429", "543", "458"], 
         "title": "drtfjdrtz", 
@@ -51,7 +51,7 @@
         "createdAt": "12.12.2022"
     },
     {
-        "id": "1",
+        "id": "4",
         "code": "OW1818",
         "price": ["429", "543", "458"],
         "title": "drtfjdrtz", 
@@ -68,7 +68,7 @@
         "createdAt": "29.12.2022"
     },
     {
-        "id": "1",
+        "id": "5",
         "code": "OW1818",
         "price": ["429", "543", "458"], 
         "title": "drtfjdrtz", 
@@ -85,7 +85,7 @@
         "createdAt": "12.09.2022"
     },
     {
-        "id": "1",
+        "id": "6",
         "code": "OW1818",
         "price": ["429", "543", "458"], 
         "title": "drtfjdrtz", 
@@ -102,7 +102,7 @@
         "createdAt": "12.09.2022"
     },
     {
-        "id": "1",
+        "id": "7",
         "code": "OW1818",
         "price": ["429", "543", "458"], 
         "title": "drtfjdrtz", 
@@ -119,7 +119,7 @@
         "createdAt": "12.12.2022"
     },
     {
-        "id": "1",
+        "id": "8",
         "code": "OW1818",
         "price": ["429", "543", "458"], 
         "title": "drtfjdrtz", 
@@ -136,7 +136,7 @@
         "createdAt": "29.12.2022"
     },
     {
-        "id": "1",
+        "id": "9",
         "code": "OW1818",
         "price": ["429", "543", "458"], 
         "title": "drtfjdrtz", 
@@ -153,7 +153,7 @@
         "createdAt": "12.09.2022"
     },
     {
-        "id": "1",
+        "id": "10",
         "code": "OW1818",
         "price": ["429", "543", "458"], 
         "title": "drtfjdrtz", 
@@ -170,7 +170,7 @@
         "createdAt": "12.09.2022"
     },
     {
-        "id": "1",
+        "id": "11",
         "code": "OW1818",
         "price": ["429", "543", "458"], 
         "title": "drtfjdrtz", 
@@ -187,7 +187,7 @@
         "createdAt": "12.12.2022"
     },
     {
-        "id": "1",
+        "id": "12",
         "code": "OW1818",
         "price": ["429", "543", "458"],
         "title": "drtfjdrtz", 
@@ -204,7 +204,7 @@
         "createdAt": "29.12.2022"
     },
     {
-        "id": "1",
+        "id": "13",
         "code": "OW1818",
         "price": ["353", "543", "458"],
         "title": "Lowest price drtfjdrtz", 
@@ -222,7 +222,7 @@
     }
     ,
     {
-        "id": "1",
+        "id": "14",
         "code": "OW1818",
         "price": ["200", "543", "458"],
         "title": "1st Lowest price drtfjdrtz", 

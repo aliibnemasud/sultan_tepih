@@ -26,15 +26,16 @@ const NewProductPage = () => {
   const [dateValue, setDateValue] = useState("");
   const [sortByDate, setSortByDate] = useState([]);
 
+  // Load Products
+  let loadProducts = products;
+
   //  pagination
-  const totalProducts = products?.length;
+  const totalProducts = loadProducts?.length;
   const pageCount = Math.ceil(totalProducts / 5);
   const indexOfLastPost = page * size;
   const indexOfFirstPost = indexOfLastPost - size;
-  const currentProducts = products?.slice(indexOfFirstPost, indexOfLastPost);
-
-  // Load Products
-  let loadProducts;
+  const currentProducts = loadProducts?.slice(indexOfFirstPost, indexOfLastPost);
+  
 
   const handleCategoryChange = () => {};
   const handleSizeChange = () => {};
@@ -58,13 +59,15 @@ const NewProductPage = () => {
      
     if(pricingValue === 'lowToHigh'){
       let filterByPrice = products?.sort((a, b) => a.price[0] - b.price[0]);
-      setSortByPrice(filterByPrice)
+      setSortByPrice(filterByPrice);
+      setDateValue('')
     }
     if(pricingValue === 'highToLow'){
       let filterByPrice = products?.sort((a, b) => b.price[0] - a.price[0]);
       // Reverse
       // let reverseFilterByPrice = filterByPrice?.reverse();
       setSortByPrice(filterByPrice);
+      setDateValue('')
     }
   }, [products, loadProducts, pricingValue, dateValue]);
 
@@ -81,7 +84,7 @@ const NewProductPage = () => {
       var d = parseDate(b.createdAt);
       return d - c;
     });
-    loadProducts = lPro
+    loadProducts = lPro;
    
   } else if (dateValue === "latestProducts") {
     let oPro = products?.sort((a, b) => {
@@ -89,7 +92,7 @@ const NewProductPage = () => {
       var d = parseDate(b.createdAt);
       return c - d;
     });
-    loadProducts = oPro
+    loadProducts = oPro;
   }
 
   

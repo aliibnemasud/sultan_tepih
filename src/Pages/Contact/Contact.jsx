@@ -11,11 +11,11 @@ export const Contact = () => {
     <div id="bodyBg">
       <SmallThumbnail img={"./img/landing-carpet.jpg"}/>
 
-      <form className="container text-start rounded p-5 my-5 border rounded" onSubmit={handleSubmit} style={{"background": "white"}}>
+      <form className="container text-start rounded p-4 my-5 border rounded" onSubmit={handleSubmit} style={{"background": "white"}}>
         <div className="form-table mt-3">
           <div className="container">
               <div className="col-xs-12 pb-3">
-                  <h3 className="text-center">Kontaktirajte nas</h3>
+                  <h3 className="text-center my-5 fw-bold">Kontaktirajte nas</h3>
                   <div className="row">
                       <div className="col-xs-12 col-sm-6">
                           <div className=" form-floating text-muted">

@@ -12,16 +12,16 @@ import NewProductSlider from "../../Components/ProductSlider/NewProductSlider";
 export const Home = () => {
   return (
     <div className="bg-image">
-      {/* <Thumbnail /> */}      
-      <Slider />      
-      {/* <section className="mb-2" id="main-beginning">
+      <Thumbnail />      
+      {/* <Slider />       */}
+      <section className="" id="main-beginning">
         <div className="col-12 row gx-0">
-          <div className="col-6" id="main-beginning-left"></div>
-          <div className="col-6" id="main-beginning-right"></div>
+          <div className="col-6 bg-image" id="main-beginning-left"></div>
+          <div className="col-6 bg-image" id="main-beginning-right"></div>
         </div>
-      </section> */}
+      </section>
 
-      <ProductSlider />
+      {/* <ProductSlider /> */}
 
       <NewProductSlider/>
 
