@@ -13,7 +13,7 @@
   transition: all 0.5s ease-in;
 }
 
-.product-card img:hover {
+.product-card .card-image img:hover {
   transform: scale(1.2);
 }
 
@@ -26,6 +26,7 @@
   position: absolute;
   bottom: -55px;
   transition: all 0.5s ease-in;
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
 .product-card:hover .card-bottom {
@@ -54,11 +55,9 @@
     margin: auto;
     display: block;
     width: 30%;
-    margin-top: 5%;
+    margin-top: 2%;   
     max-width: 700px;
-  }
-
- 
+  } 
   
   /* Caption of Modal Image (Image Text) - Same Width as the Image */
   #caption {

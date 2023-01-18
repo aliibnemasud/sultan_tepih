@@ -5,13 +5,7 @@ import "./ProductCard.css";
 const NewProductCard = ({ product }) => {
   const [openModal, setOpenModal] = useState('');
 
-
-  //console.log(product);
-
-  
-
-  const handleOpenModla = () => { 
-    
+  const handleOpenModal = () => {        
     if(openModal === 'd-block'){
       setOpenModal('')
     } else {
@@ -19,20 +13,19 @@ const NewProductCard = ({ product }) => {
     }    
   }
 
-
   return (
     <div className="product-card col-lg-3 my-3">
       <div className="card-content rounded">
         <div className="card-image">
-          <img onClick={handleOpenModla} src={product.img[0]} className="img-fluid text-center" alt="" />
-          <div className="card-bottom bg-primary py-2 w-100 d-flex justify-content-around">
-            <button className="btn btn-lite text-white">
+          <img onClick={handleOpenModal} src={product.img[0]} className="img-fluid text-center" alt="" />
+          <div className="card-bottom py-2 w-100 d-flex justify-content-around">
+            <button className="btn btn-lite text-danger">
               <FaEye/>
             </button>
-            <button className="btn btn-lite text-white">
-              <FaAlgolia />
+            <button className="btn btn-lite text-danger">
+              <FaAlgolia/>
             </button>
-            <button className="btn btn-lite text-white">
+            <button className="btn btn-lite text-danger">
               <FaAlgolia />
             </button>
           </div>
@@ -44,7 +37,7 @@ const NewProductCard = ({ product }) => {
       </div>
 
       <div className={`my-modal ${openModal}`}>
-        <span onClick={handleOpenModla} class="close-btn">&times;</span>
+        <span onClick={handleOpenModal} class="close-btn">&times;</span>
         <img width="20%" src={product.img[0]} className="myModal-content" />
         <div id="caption"></div>
       </div>
