@@ -7,6 +7,7 @@ import { Services } from "../../Components/Services/Services";
 import "react-multi-carousel/lib/styles.css";
 import { ProductSlider } from "../../Components/ProductSlider/ProductSlider";
 import Slider from "../../Components/Slider/Slider";
+import NewProductSlider from "../../Components/ProductSlider/NewProductSlider";
 
 export const Home = () => {
   return (
@@ -21,6 +22,9 @@ export const Home = () => {
       </section> */}
 
       <ProductSlider />
+
+      <NewProductSlider/>
+
       <Services />
       <Collections />
       <Locations />

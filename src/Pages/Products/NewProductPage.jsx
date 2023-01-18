@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { filterContent } from "./Data";
 import ProductPopup from "./ProductPopup";
 import { FaArrowLeft, FaArrowRight, FaList } from "react-icons/fa";
@@ -14,24 +14,85 @@ const NewProductPage = () => {
   const [toggleBar, setToggleBar] = useState("");
   const { isLoading, error, data } = useQuery("productData", () => axios.get("/data/products.json"));
   const products = data?.data;
-
   const [page, setPage] = useState(1);
   const [size, setSize] = useState(5);
+
   const [showImage, setShowImage] = useState(false);
   const [modalProductData, setModalProductData] = useState("");
 
-  const totalProducts = products?.length;
-  const pageCount = Math.ceil(totalProducts / 5);
+  // Filtering....
+  const [pricingValue, setPricingValue] = useState("");
+  const [sortByPrice, setSortByPrice] = useState([]);
+  const [dateValue, setDateValue] = useState("");
+  const [sortByDate, setSortByDate] = useState([]);
 
   //  pagination
+  const totalProducts = products?.length;
+  const pageCount = Math.ceil(totalProducts / 5);
   const indexOfLastPost = page * size;
   const indexOfFirstPost = indexOfLastPost - size;
   const currentProducts = products?.slice(indexOfFirstPost, indexOfLastPost);
+
+  // Load Products
+  let loadProducts;
 
   const handleCategoryChange = () => {};
   const handleSizeChange = () => {};
   const handleColorChange = () => {};
   const filterProducts = () => {};
+
+  // Sort by price
+  /* let filterByPrice = products?.sort((a, b) => a.price[0] - b.price[0]);
+  if (pricingValue === "lowToHigh") {
+    setSortByPrice(filterByPrice);
+  }
+  if (pricingValue === "highToLow") {
+    // Reverse
+    let reverseFilterByPrice = filterByPrice?.reverse();
+    setSortByPrice(reverseFilterByPrice);
+  } */
+
+  // 
+  
+  useEffect(() => {
+     
+    if(pricingValue === 'lowToHigh'){
+      let filterByPrice = products?.sort((a, b) => a.price[0] - b.price[0]);
+      setSortByPrice(filterByPrice)
+    }
+    if(pricingValue === 'highToLow'){
+      let filterByPrice = products?.sort((a, b) => b.price[0] - a.price[0]);
+      // Reverse
+      // let reverseFilterByPrice = filterByPrice?.reverse();
+      setSortByPrice(filterByPrice);
+    }
+  }, [products, loadProducts, pricingValue, dateValue]);
+
+  // Sorting by date
+
+  function parseDate(input) {
+    var parts = input.match(/(\d+)/g); // note parts[1]-1
+    return new Date(parts[2], parts[1] - 1, parts[0]);
+  }
+
+  if (dateValue === "oldestProducts") {
+    let lPro = products?.sort((a, b) => {
+      var c = parseDate(a.createdAt);
+      var d = parseDate(b.createdAt);
+      return d - c;
+    });
+    loadProducts = lPro
+   
+  } else if (dateValue === "latestProducts") {
+    let oPro = products?.sort((a, b) => {
+      var c = parseDate(a.createdAt);
+      var d = parseDate(b.createdAt);
+      return c - d;
+    });
+    loadProducts = oPro
+  }
+
+  
 
   if (isLoading) return <h1>Loading....</h1>;
 
@@ -44,17 +105,47 @@ const NewProductPage = () => {
     }
   };
 
-  // Sort by price
-  const sortByPrice = () => {
-    let filterByPrice = products.sort((a, b) => a.price[0] - b.price[0]);
-    console.log(filterByPrice);
+  // Sort Logic start from here here
 
-    // Reverse
-    let reverseFilterByPrice = filterByPrice.reverse();
-    console.log(reverseFilterByPrice);
-  };
+  /* function parseDate(input) {
+    var parts = input.match(/(\d+)/g); // note parts[1]-1
+    return new Date(parts[2], parts[1] - 1, parts[0]);
+  }
+  const selectFilter = (e) => {
+    let selected = e.target.value;
+    if (products == null) {
+      if (products != null) {
+        products = [...products];
+      }
+    }
+    // console.log('sort', productsData);
 
-  const selectFilter = () => {};
+    // eslint-disable-next-line eqeqeq
+
+    if (selected == "oldestProducts") {
+      products.sort((a, b) => {
+        var c = parseDate(a.createdAt);
+        var d = parseDate(b.createdAt);
+        return d - c;
+      });
+      // eslint-disable-next-line eqeqeq
+    } else if (selected == "latestProducts") {
+      products.sort((a, b) => {
+        var c = parseDate(a.createdAt);
+        var d = parseDate(b.createdAt);
+        return c - d;
+      });
+    }
+    setSortByDate(products);
+  }; */
+
+  if (sortByDate.length > 0) {
+    loadProducts = sortByDate;
+  } else if (sortByPrice.length > 0) {
+    loadProducts = sortByPrice;
+  } else {
+    loadProducts = currentProducts;
+  }
 
   return (
     <section className="container-fluid">
@@ -147,14 +238,14 @@ const NewProductPage = () => {
 
             <div className="d-flex gap-1 flex-wrap">
               <div className="d-flex gap-2">
-                <Form.Select onChange={sortByPrice} aria-label="sorting by size">
+                <Form.Select onChange={(e) => setPricingValue(e.target.value)} aria-label="sorting by size">
                   <option value="lowToHigh">Price (Low to High)</option>
                   <option value="highToLow">Price (High to Low)</option>
                 </Form.Select>
               </div>
 
               <div className="d-flex gap-2">
-                <Form.Select onChange={selectFilter} aria-label="sorting by size">
+                <Form.Select onChange={(e) => setDateValue(e.target.value)} aria-label="sorting by size">
                   <option value="latestProducts">Najnoviji Proizvodi</option>
                   <option value="oldestProducts">Najstariji Proizvodi</option>
                 </Form.Select>
@@ -165,11 +256,9 @@ const NewProductPage = () => {
           {/* products */}
 
           <section className="products row py-2">
-            {currentProducts
-              ? currentProducts?.map((product) => {
-                
+            {loadProducts
+              ? loadProducts?.map((product) => {
                   return <NewProductCard product={product} setModalProductData={setModalProductData} setShowImage={setShowImage} />;
-
                 })
               : "Trenutno nemamo proizvode koje ste tražili"}
           </section>

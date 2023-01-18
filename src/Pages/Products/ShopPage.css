@@ -12,8 +12,7 @@ body{
     transition: all 0.5s;
     border-right: 1px dotted;
     overflow-y: scroll;    
-    padding-bottom: 5rem;
-    
+    padding-bottom: 5rem;    
     margin-top: 5%;
 }
 

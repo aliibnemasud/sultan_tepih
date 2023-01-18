@@ -12,7 +12,7 @@ const NewProductCard = ({ product }) => {
       setOpenModal('d-block')
     }    
   }
-
+  
   return (
     <div className="product-card col-lg-3 my-3">
       <div className="card-content rounded">
