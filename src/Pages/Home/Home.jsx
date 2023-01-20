@@ -9,6 +9,9 @@ import { ProductSlider } from "../../Components/ProductSlider/ProductSlider";
 import Slider from "../../Components/Slider/Slider";
 import NewProductSlider from "../../Components/ProductSlider/NewProductSlider";
 
+
+const image = require('../../Images/product.jpg');
+
 export const Home = () => {
   return (
     <div className="bg-image">
@@ -24,6 +27,8 @@ export const Home = () => {
       {/* <ProductSlider /> */}
 
       <NewProductSlider/>
+
+      
 
       <Services />
       <Collections />

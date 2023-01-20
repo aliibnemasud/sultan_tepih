@@ -15,20 +15,17 @@ const NewProductCard = ({ product }) => {
   };
 
   return (
-    <div className="product-card col-lg-3 my-3">
+    <div className="product-card col-lg-3 col-6 col-md-4 my-3">
       <div className="card-content rounded">
         <div className="card-image">
           <img onClick={handleOpenModal} src={product?.img[0]} className="img-fluid text-center" alt="" />
           <div className="card-bottom py-2 w-100 d-flex justify-content-around align-items-center">
             <button onClick={handleOpenModal} className="btn btn-lite text-danger">
-              <FaEye size={30} />
+              <FaEye size={20} />
             </button>
             <button onClick={()=> navigate(`/product-details/${product?.id}`)} className="btn btn-lite text-danger">
-              <FaInfoCircle size={30} />
-            </button>
-            <button className="btn btn-lite text-danger ">
-              <FaSearchPlus size={30} />
-            </button>
+              <FaInfoCircle size={20} />
+            </button>            
             <span className="d-flex flex-row flex-wrap fs-5 align-items-end">
               Boje:{" "}
               {product?.colors?.map((color, index) => {
@@ -37,7 +34,7 @@ const NewProductCard = ({ product }) => {
             </span>
           </div>
         </div>
-        <div className="d-flex w-100 py-3 justify-content-between px-3">
+        <div className="d-flex flex-wrap w-100 py-3 justify-content-between px-3">
           <h5><span className="fw-bold text-danger">Kolekcija:</span> {product?.collection}</h5>
           <h5><span className="fw-bold text-danger">Kod:</span> {product?.code}</h5>
         </div>

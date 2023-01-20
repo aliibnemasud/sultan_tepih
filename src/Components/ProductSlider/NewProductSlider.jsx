@@ -1,9 +1,11 @@
 import axios from "axios";
 import React, { Component } from "react";
-import { FaAlgolia, FaArrowCircleLeft, FaArrowCircleRight, FaEye, FaInfoCircle, FaSearchPlus } from "react-icons/fa";
+import { FaEye, FaInfoCircle, FaSearchPlus } from "react-icons/fa";
 import Slider from "react-slick";
 import ImageModal from "./ImageModal";
-import { useNavigate } from "react-router-dom";
+
+import { Magnifier, GlassMagnifier, SideBySideMagnifier, PictureInPictureMagnifier, MOUSE_ACTIVATION, TOUCH_ACTIVATION } from "react-image-magnifiers";
+
 // import '../../Pages/Products/ProductCard.css';
 
 /* function SampleNextArrow(props) {
@@ -29,12 +31,12 @@ class NewProductSlider extends Component {
   state = { products: [], openModal: "", pdImg: "" };
 
   navigate = (prop) => {
-    window.location.href = `/product-details/${prop}`
+    window.location.href = `/product-details/${prop}`;
   };
 
   componentDidMount() {
     axios.get("/data/products.json").then((res) => this.setState({ products: res.data }));
-  }  
+  }
 
   changeState = (props) => {
     this.setState({ openModal: props });
@@ -88,7 +90,31 @@ class NewProductSlider extends Component {
               <div className="product-card col-lg-3 my-3">
                 <div className="card-content rounded">
                   <div className="card-image">
-                    <img
+                    <GlassMagnifier
+                      imageSrc={product.img[0]}
+                      allowOverflow={true} 
+                      imageAlt="Example"
+                      magnifierSize="80%"
+                      largeImageSrc={product.img[0]} // Optional
+                      onClick={() => {
+                        if (this.state.openModal === "d-block") {
+                          this.setState({ openModal: "" });
+                        } else {
+                          this.setState({
+                            openModal: "d-block",
+                            pdImg: product.img[0],
+                          });
+                        }
+                      }}
+                    />
+                    {/* <Magnifier
+                      imageSrc={product.img[0]}
+                      imageAlt="Example"
+                      largeImageSrc={product.img[0]} // Optional
+                      mouseActivation={MOUSE_ACTIVATION.DOUBLE_CLICK} // Optional
+                      touchActivation={TOUCH_ACTIVATION.DOUBLE_TAP} // Optional
+                    /> */}
+                    {/* <img
                       onClick={() => {
                         if (this.state.openModal === "d-block") {
                           this.setState({ openModal: "" });
@@ -102,18 +128,21 @@ class NewProductSlider extends Component {
                       src={product.img[0]}
                       className="img-fluid text-center"
                       alt=""
-                    />
+                    /> */}
                     <div className="card-bottom py-2 w-100 d-flex justify-content-around align-items-center">
-                      <button onClick={() => {
-                        if (this.state.openModal === "d-block") {
-                          this.setState({ openModal: "" });
-                        } else {
-                          this.setState({
-                            openModal: "d-block",
-                            pdImg: product.img[0],
-                          });
-                        }
-                      }} className="btn btn-lite text-danger">
+                      <button
+                        onClick={() => {
+                          if (this.state.openModal === "d-block") {
+                            this.setState({ openModal: "" });
+                          } else {
+                            this.setState({
+                              openModal: "d-block",
+                              pdImg: product.img[0],
+                            });
+                          }
+                        }}
+                        className="btn btn-lite text-danger"
+                      >
                         <FaEye size={20} />
                       </button>
                       <button onClick={() => this.navigate(`${product?.id}`)} className="btn btn-lite text-danger">
@@ -131,8 +160,13 @@ class NewProductSlider extends Component {
                     </div>
                   </div>
                   <div className="d-flex w-100 py-3 justify-content-between px-3">
-                    <h6><span className="fw-bold text-danger">Kolekcija: </span>{product?.category}</h6>
-                    <h6><span className="fw-bold text-danger">Kod: </span> {product?.code}</h6>
+                    <h6>
+                      <span className="fw-bold text-danger">Kolekcija: </span>
+                      {product?.category}
+                    </h6>
+                    <h6>
+                      <span className="fw-bold text-danger">Kod: </span> {product?.code}
+                    </h6>
                   </div>
                 </div>
               </div>
