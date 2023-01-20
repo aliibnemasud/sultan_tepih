@@ -28,21 +28,48 @@ class NewProductSlider extends Component {
     const products = data?.data;
   }; */
 
-  state = { products: [], openModal: "", pdImg: "" };
+      
+      state = { products: [], newProducts: [], openModal: "", pdImg: "", active: "featured" };
 
   navigate = (prop) => {
     window.location.href = `/product-details/${prop}`;
   };
 
-  componentDidMount() {
-    axios.get("/data/products.json").then((res) => this.setState({ products: res.data }));
+  async componentDidMount() {
+   await axios.get("/data/products.json").then((res) => this.setState({ products: res.data }));
+    
+    function parseDate(input) {
+      var parts = input.match(/(\d+)/g); // note parts[1]-1
+      return new Date(parts[2], parts[1] - 1, parts[0]);
+    }
+
+    let newestProduct = this.state.products?.sort((a, b) => {
+        var c = parseDate(a.createdAt);
+        var d = parseDate(b.createdAt);
+        return c - d;
+      });
+  
+      this.setState({
+        newProducts: newestProduct 
+      })
+
+
+      console.log(newestProduct)
+
   }
 
   changeState = (props) => {
     this.setState({ openModal: props });
   };
 
-  render() {
+  onDiscount = (e) => {
+    this.setState({
+      active: e.target.id
+    });
+  };
+
+  render() {   
+
     var settings = {
       dots: true,
       infinite: true,
@@ -80,19 +107,38 @@ class NewProductSlider extends Component {
         },
       ],
     };
+    
+
+    let loadSlider;
+
+    if(this.state.active === 'newest-products'){
+      loadSlider = this.state.newProducts
+    } else {
+      loadSlider = this.state.products
+    }
 
     return (
       <div className="text-center container mt-5">
-        <h2 className="fw-bold">Products</h2>
+        <div>
+          <button id="on-discount" onClick={this.onDiscount} className={`btn ${this.state.active === "on-discount" ? "btn-danger" : ""} px-3 py-2 mx-2 rounded`}>
+            On discount
+          </button>
+          <button id="featured" onClick={this.onDiscount} className={`btn ${this.state.active == "featured" ? "btn-danger" : ""} px-3 py-2 mx-2 rounded`}>
+            Featured
+          </button>
+          <button id="newest-products" onClick={this.onDiscount} className={`btn ${this.state.active === "newest-products" ? "btn-danger" : ""} px-3 py-2 mx-2 rounded`}>
+            Newest products
+          </button>
+        </div>
         <Slider {...settings} className="row">
-          {this.state.products.map((product) => {
+          {loadSlider?.map((product) => {
             return (
               <div className="product-card col-lg-3 my-3">
                 <div className="card-content rounded">
                   <div className="card-image">
                     <GlassMagnifier
                       imageSrc={product.img[0]}
-                      allowOverflow={true} 
+                      allowOverflow={true}
                       imageAlt="Example"
                       magnifierSize="80%"
                       largeImageSrc={product.img[0]} // Optional
@@ -148,9 +194,7 @@ class NewProductSlider extends Component {
                       <button onClick={() => this.navigate(`${product?.id}`)} className="btn btn-lite text-danger">
                         <FaInfoCircle size={20} />
                       </button>
-                      <button className="btn btn-lite text-danger ">
-                        <FaSearchPlus size={20} />
-                      </button>
+
                       <span className="d-flex flex-row flex-wrap fs-5 align-items-end">
                         Boje:{" "}
                         {product?.colors?.map((color, index) => {
