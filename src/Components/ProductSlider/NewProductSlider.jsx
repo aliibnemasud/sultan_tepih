@@ -1,26 +1,27 @@
 import axios from "axios";
 import React, { Component } from "react";
-import { FaEye, FaInfoCircle, FaSearchPlus } from "react-icons/fa";
+import { FaArrowCircleLeft, FaArrowCircleRight, FaEye, FaInfoCircle, FaSearchPlus } from "react-icons/fa";
 import Slider from "react-slick";
 import ImageModal from "./ImageModal";
+import './Slider.css';
 
 import { Magnifier, GlassMagnifier, SideBySideMagnifier, PictureInPictureMagnifier, MOUSE_ACTIVATION, TOUCH_ACTIVATION } from "react-image-magnifiers";
 
 // import '../../Pages/Products/ProductCard.css';
 
-/* function SampleNextArrow(props) {
+function SampleNextArrow(props) {
   const { className, style, onClick } = props;
-  return <div className={className} style={{ ...style, display: 'block', color: "red" }} onClick={onClick}>
-    <h1 className="ml-5"><FaArrowCircleRight /></h1>
+  return <div className={`${className} d-none d-lg-block bg-danger p-0`} style={{ ...style, display: 'block', color: "red" }} onClick={onClick}>
+    
   </div>;
 }
 
 function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
-  return <div className={className} style={{ ...style, display: "block", color: "green" }} onClick={onClick}>
-    <h1><FaArrowCircleLeft /></h1>
+  return <div className={`${className} d-none d-lg-block sideArrow bg-danger`} style={{ ...style, display: "block", color: "green" }} onClick={onClick}>
+  
   </div>;
-} */
+}
 
 class NewProductSlider extends Component {
   /* loadProducts = () => {
@@ -50,7 +51,7 @@ class NewProductSlider extends Component {
       });
   
       this.setState({
-        newProducts: newestProduct 
+        newProducts: newestProduct
       })
 
 
@@ -80,6 +81,8 @@ class NewProductSlider extends Component {
       autoplay: true,
       autoplaySpeed: 3000,
       pauseOnHover: true,
+      nextArrow: <SampleNextArrow />,
+      prevArrow: <SamplePrevArrow />,
       responsive: [
         {
           breakpoint: 1024,
