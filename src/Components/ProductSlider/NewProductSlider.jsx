@@ -134,7 +134,7 @@ class NewProductSlider extends Component {
           </button>
         </div>
         <Slider {...settings} className="row">
-          {loadSlider?.map((product) => {
+          {this.state.products.map((product) => {
             return (
               <div className="product-card col-lg-3 my-3">
                 <div className="card-content rounded">
