@@ -8,6 +8,8 @@ import "react-multi-carousel/lib/styles.css";
 import { ProductSlider } from "../../Components/ProductSlider/ProductSlider";
 import Slider from "../../Components/Slider/Slider";
 import NewProductSlider from "../../Components/ProductSlider/NewProductSlider";
+import { Footer } from "../../Components/Footer/Footer";
+import { Navbar } from "../../Components/Navbar/Navbar";
 
 
 const image = require('../../Images/product.jpg');
@@ -15,6 +17,7 @@ const image = require('../../Images/product.jpg');
 export const Home = () => {
   return (
     <div className="bg-image">
+      <Navbar/>
       <Thumbnail />      
       {/* <Slider />       */}
       <section className="" id="main-beginning">
@@ -33,6 +36,7 @@ export const Home = () => {
       <Services />
       <Collections />
       <Locations />
+      <Footer />
     </div>
   );
 };

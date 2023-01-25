@@ -35,7 +35,6 @@ body{
     background-color: rgb(224, 224, 224);    
 }
 
-
 @media (max-width: 768px){
     #sidebar {
         margin-left: -17rem;
@@ -112,8 +111,8 @@ body{
 }
 
 .productNew {
-    /* overflow-y: hidden; */
-    height: 100vh;
+    
+    
 }
 
 .sideBarNew {

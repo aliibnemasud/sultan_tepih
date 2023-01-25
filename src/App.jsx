@@ -14,7 +14,7 @@ import NewShopPage from "./Pages/Products/NewShopPage";
 function App() {
   return (
     <div className="App">
-      {/* <Navbar /> */}
+      <Navbar />
       <div className="space"></div>
       <Switch>
         <Routes>
@@ -48,7 +48,9 @@ function App() {
           <Route path="/product-details/:id" element={<ProductDetails />} />
         </Routes>
       </Switch>
-      <Footer />
+
+      <Footer/>
+      
     </div>
   );
 }

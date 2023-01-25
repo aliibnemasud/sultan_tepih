@@ -75,11 +75,14 @@
   background: linear-gradient(rgba(241, 241, 241, 0.8), rgba(245, 245, 245, 0.8)), url(./Images/bodyBg.png); 
 }
 
-
+.navbar {
+  z-index: 1;
+}
 
 @media only screen and (min-width: 992px) {
     .navbar {
       flex-direction: column;
+      
     }
   }
  @media ( min-width: 768px) {

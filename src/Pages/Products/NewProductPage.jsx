@@ -130,7 +130,7 @@ const NewProductPage = () => {
   };
 
   return (
-    <section className="container-fluid">
+    <section className="container-fluid productPage">
       <div className="row">
         <div className="sidebar bg-white shadow" style={{ width: `${sideBar}` }}>
           <div onClick={handleSideBar} className="closebtn">
@@ -251,7 +251,7 @@ const NewProductPage = () => {
           </section>
 
           {/* pagination */}
-          <nav aria-label="" className="">
+          <nav aria-label="" className="mb-3">
             <ul className="pagination justify-content-center">
               <li className="page-item">
                 <button onClick={() => setPage(page - 1)} className="page-link" href="#" tabindex="-1">
