@@ -3,24 +3,21 @@ import React, { Component } from "react";
 import { FaArrowCircleLeft, FaArrowCircleRight, FaEye, FaInfoCircle, FaSearchPlus } from "react-icons/fa";
 import Slider from "react-slick";
 import ImageModal from "./ImageModal";
-import './Slider.css';
+import "./Slider.css";
 
 import { Magnifier, GlassMagnifier, SideBySideMagnifier, PictureInPictureMagnifier, MOUSE_ACTIVATION, TOUCH_ACTIVATION } from "react-image-magnifiers";
+import PdDetailsModal from "./PdDetailsModal";
 
 // import '../../Pages/Products/ProductCard.css';
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
-  return <div className={`${className} d-none d-lg-block bg-danger p-0`} style={{ ...style, display: 'block', color: "red" }} onClick={onClick}>
-    
-  </div>;
+  return <div className={`${className} d-none d-lg-block bg-danger p-0`} style={{ ...style, display: "block", color: "red" }} onClick={onClick}></div>;
 }
 
 function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
-  return <div className={`${className} d-none d-lg-block sideArrow bg-danger`} style={{ ...style, display: "block", color: "green" }} onClick={onClick}>
-  
-  </div>;
+  return <div className={`${className} d-none d-lg-block sideArrow bg-danger`} style={{ ...style, display: "block", color: "green" }} onClick={onClick}></div>;
 }
 
 class NewProductSlider extends Component {
@@ -29,34 +26,31 @@ class NewProductSlider extends Component {
     const products = data?.data;
   }; */
 
-      
-      state = { products: [], newProducts: [], openModal: "", pdImg: "", active: "featured" };
+  state = { products: [], newProducts: [], openModal: "", pdImg: "", active: "featured" };
 
   navigate = (prop) => {
     window.location.href = `/product-details/${prop}`;
   };
 
   async componentDidMount() {
-   await axios.get("/data/products.json").then((res) => this.setState({ products: res.data }));
-    
+    await axios.get("/data/products.json").then((res) => this.setState({ products: res.data }));
+
     function parseDate(input) {
       var parts = input.match(/(\d+)/g); // note parts[1]-1
       return new Date(parts[2], parts[1] - 1, parts[0]);
     }
 
     let newestProduct = this.state.products?.sort((a, b) => {
-        var c = parseDate(a.createdAt);
-        var d = parseDate(b.createdAt);
-        return c - d;
-      });
-  
-      this.setState({
-        newProducts: newestProduct
-      })
+      var c = parseDate(a.createdAt);
+      var d = parseDate(b.createdAt);
+      return c - d;
+    });
 
+    this.setState({
+      newProducts: newestProduct,
+    });
 
-      console.log(newestProduct)
-
+    console.log(newestProduct);
   }
 
   changeState = (props) => {
@@ -65,12 +59,11 @@ class NewProductSlider extends Component {
 
   onDiscount = (e) => {
     this.setState({
-      active: e.target.id
+      active: e.target.id,
     });
   };
 
-  render() {   
-
+  render() {
     var settings = {
       dots: true,
       infinite: true,
@@ -110,14 +103,13 @@ class NewProductSlider extends Component {
         },
       ],
     };
-    
 
     let loadSlider;
 
-    if(this.state.active === 'newest-products'){
-      loadSlider = this.state.newProducts
+    if (this.state.active === "newest-products") {
+      loadSlider = this.state.newProducts;
     } else {
-      loadSlider = this.state.products
+      loadSlider = this.state.products;
     }
 
     return (
@@ -140,6 +132,7 @@ class NewProductSlider extends Component {
                 <div className="card-content rounded">
                   <div className="card-image">
                     <GlassMagnifier
+                    
                       imageSrc={product.img[0]}
                       allowOverflow={true}
                       imageAlt="Example"
@@ -156,28 +149,7 @@ class NewProductSlider extends Component {
                         }
                       }}
                     />
-                    {/* <Magnifier
-                      imageSrc={product.img[0]}
-                      imageAlt="Example"
-                      largeImageSrc={product.img[0]} // Optional
-                      mouseActivation={MOUSE_ACTIVATION.DOUBLE_CLICK} // Optional
-                      touchActivation={TOUCH_ACTIVATION.DOUBLE_TAP} // Optional
-                    /> */}
-                    {/* <img
-                      onClick={() => {
-                        if (this.state.openModal === "d-block") {
-                          this.setState({ openModal: "" });
-                        } else {
-                          this.setState({
-                            openModal: "d-block",
-                            pdImg: product.img[0],
-                          });
-                        }
-                      }}
-                      src={product.img[0]}
-                      className="img-fluid text-center"
-                      alt=""
-                    /> */}
+
                     <div className="card-bottom py-2 w-100 d-flex justify-content-around align-items-center">
                       <button
                         onClick={() => {
@@ -206,7 +178,7 @@ class NewProductSlider extends Component {
                       </span>
                     </div>
                   </div>
-                  <div className="d-flex w-100 py-3 justify-content-between px-3">
+                  <div onClick={() => this.navigate(`${product?.id}`)} className="d-flex w-100 py-3 justify-content-between px-3" >
                     <h6>
                       <span className="fw-bold text-danger">Kolekcija: </span>
                       {product?.category}
@@ -216,8 +188,11 @@ class NewProductSlider extends Component {
                     </h6>
                   </div>
                 </div>
+                
               </div>
             );
+
+            
           })}
         </Slider>
 
