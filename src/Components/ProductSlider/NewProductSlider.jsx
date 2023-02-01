@@ -132,11 +132,11 @@ class NewProductSlider extends Component {
               <div className="product-card col-lg-3 my-3">
                 <div className="card-content rounded">
                   <div className="card-image">
-                   {/*  <GlassMagnifier                    
+                    <GlassMagnifier                    
                       imageSrc={product.img[0]}
                       allowOverflow={true}
                       imageAlt="Example"
-                      magnifierSize="80%"
+                      magnifierSize="70%"
                       largeImageSrc={product.img[0]} // Optional
                       onClick={() => {
                         if (this.state.openModal === "d-block") {
@@ -148,11 +148,11 @@ class NewProductSlider extends Component {
                           });
                         }
                       }}
-                    /> */}
+                    />
                     {/* normar image */}
                     {/* <img src={product.img[0]} alt="" className="w-100 img-fluid" /> */}
 
-                    <ReactImageMagnify
+                   {/*  <ReactImageMagnify
                       {...{
                         smallImage: {
                             alt: 'Wristwatch by Ted Baker London',
@@ -165,8 +165,7 @@ class NewProductSlider extends Component {
                             height: 1800
                         }
                     }}
-                    />
-
+                    /> */}
 
                     <div className="card-bottom py-2 w-100 d-flex justify-content-around align-items-center">
                       <button

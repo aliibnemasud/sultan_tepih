@@ -19,10 +19,9 @@ const NewProductCard = ({ product }) => {
     <div className="product-card col-lg-3 col-6 col-md-4 my-3">
       <div className="card-content rounded">
         <div className="card-image">
-          
-          {/* <img onClick={() => navigate(`/product-details/${product?.id}`)} src={product?.img[0]} className="img-fluid text-center" alt="" /> */}
+          <img onClick={() => navigate(`/product-details/${product?.id}`)} src={product?.img[0]} className="img-fluid text-center" alt="" />
 
-          <ReactImageMagnify
+          {/*  <ReactImageMagnify
             {...{
               smallImage: {
                 alt: "Wristwatch by Ted Baker London",
@@ -35,19 +34,13 @@ const NewProductCard = ({ product }) => {
                 height: 1800,
               },
             }}
-          />
+          /> */}
 
           <div className="card-bottom py-2 w-100 d-flex justify-content-around align-items-center">
-            <button
-              onClick={handleOpenModal}
-              className="btn btn-lite text-danger"
-            >
+            <button onClick={handleOpenModal} className="btn btn-lite text-danger">
               <FaEye size={20} />
             </button>
-            <button
-              onClick={() => navigate(`/product-details/${product?.id}`)}
-              className="btn btn-lite text-danger"
-            >
+            <button onClick={() => navigate(`/product-details/${product?.id}`)} className="btn btn-lite text-danger">
               <FaInfoCircle size={20} />
             </button>
             <span className="d-flex flex-row flex-wrap fs-5 align-items-end">
@@ -69,14 +62,9 @@ const NewProductCard = ({ product }) => {
             </span>
           </div>
         </div>
-        <div
-          className="d-flex flex-wrap w-100 py-3 justify-content-between px-3"
-          data-bs-target="#exampleModalToggle"
-          data-bs-toggle="modal"
-        >
+        <div className="d-flex flex-wrap w-100 py-3 justify-content-between px-3" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">
           <h5 className="mobileViewText">
-            <span className="fw-bold text-danger">Kolekcija:</span>{" "}
-            {product?.collection}
+            <span className="fw-bold text-danger">Kolekcija:</span> {product?.collection}
           </h5>
           <h5 className="mobileViewText">
             <span className="fw-bold text-danger">Kod:</span> {product?.code}
@@ -86,25 +74,14 @@ const NewProductCard = ({ product }) => {
 
       {/* product details modal */}
 
-      <div
-        class="modal fade"
-        id="exampleModalToggle"
-        aria-hidden="true"
-        aria-labelledby="exampleModalToggleLabel"
-        tabindex="-1"
-      >
+      <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
               <h1 class="modal-title fs-5" id="exampleModalToggleLabel">
                 Product Details
               </h1>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body text-center">
               <img width="80%" src={product?.img[0]} alt="" />
@@ -120,7 +97,9 @@ const NewProductCard = ({ product }) => {
         </div>
       </div>
 
-      {/* product details modal */}
+      {/* product details modal end */}
+
+      {/* light box modal start */}
 
       <div onClick={handleOpenModal} className={`my-modal ${openModal}`}>
         <span onClick={handleOpenModal} class="close-btn">
@@ -129,6 +108,7 @@ const NewProductCard = ({ product }) => {
         <img width="20%" src={product?.img[0]} className="myModal-content" />
         <div id="caption"></div>
       </div>
+      {/* light box modal start */}
     </div>
   );
 };

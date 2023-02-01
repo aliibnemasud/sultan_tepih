@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { filterContent } from "./Data";
 import ProductPopup from "./ProductPopup";
-import { FaArrowLeft, FaArrowRight, FaBars, FaFilter, FaList } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight, FaBars, FaFilter, FaList, FaTasks } from "react-icons/fa";
+import { AiOutlineBars } from "react-icons/ai";
 import "./ShopPage.css";
 import { useState } from "react";
 import { useQuery } from "react-query";
@@ -211,26 +212,26 @@ const NewProductPage = () => {
         <section className={`productNew border col-lg-12`}>
           <ProductPopup show={showImage} modalProductData={modalProductData} onHide={() => setShowImage(false)} />
 
-          <div className="d-flex justify-content-between align-items-center p-3">
-            <div className="d-flex gap-3">
+          <div className="d-flex justify-content-between align-items-center p-3 mt-5">
+            <div className="d-flex align-items-center gap-3">
               <div>
                 {/* <button onClick={sidebarCollapse} type="button" className="btn mb-3">
                   {toggleBar === "active" ? <FaArrowRight className="text-primary fw-bold" /> : <FaBars className="text-primary fw-bold" />}
                 </button> */}
-                <button type="button" onClick={handleSideBar} className="btn btn-primary text-white" id="sidebarButton">
-                  <FaBars className="text-white fw-bold" />
+                <button type="button" onClick={handleSideBar} className="btn btn-lite btn-lg text-danger" id="sidebarButton">
+                  <FaTasks />                  
                 </button>
               </div>
 
               <div>
-                <h2>Svi Proizvodi</h2>
-                <p className="text-primary fw-bold">{currentProducts?.length} Proizvoda</p>
+                <h2 className="mobileViewText mt-2">Svi Proizvodi</h2>
+                {/* <p className="text-primary fw-bold">{currentProducts?.length} Proizvoda</p> */}
               </div>
             </div>
 
             <div className="d-flex gap-1 flex-wrap">
               <div className="d-flex gap-2">
-                <Form.Select className="border-0 shadow-sm font-weight-normal" onChange={(e) => setDateValue(e.target.value)} aria-label="sorting by size">                  
+                <Form.Select className="border-0 shadow-sm font-weight-normal" onChange={(e) => setDateValue(e.target.value)} aria-label="sorting by size">
                   <option value="latestProducts">Najnoviji Proizvodi</option>
                   <option value="oldestProducts">Najstariji Proizvodi</option>
                   <option value="lowToHigh">Price (Low to High)</option>
