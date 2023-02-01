@@ -29,14 +29,11 @@ export const Home = () => {
 
       {/* <ProductSlider /> */}
 
-      <NewProductSlider/>
-
-      
+      <NewProductSlider/>     
 
       <Services />
       <Collections />
-      <Locations />
-      <Footer />
+      <Locations />     
     </div>
   );
 };
