@@ -127,12 +127,17 @@ export const ProductDetails = () => {
               <div>
                 <h3 className="">Boje</h3>
                 {product.colors.map((color) => {
-                  return <p key={color}>&ensp;-{color}</p>;
+                  return <p key={color}>&ensp;- {color}</p>;
                 })}
               </div>
               <div>
                 <h3 className="">Sastav</h3>
-                <p>&ensp;{product.desc}</p>
+                {/* <p>&ensp;{product.desc}</p> */}
+                <ul>
+                  {                    
+                      product.desc.map(li => <li>{li}</li>)                    
+                  }
+                </ul>
               </div>
             </div>
 

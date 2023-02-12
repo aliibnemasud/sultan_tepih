@@ -84,7 +84,7 @@ const NewProductCard = ({ product }) => {
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body text-center">
-              <img width="80%" src={product?.img[0]} alt="" />
+              <img width="80%" src={product?.img} alt="" />
               <div className="text-left">
                 <h3 className="fw-bold my-2">Boje</h3>
                 {product.colors.map((color) => {
@@ -105,7 +105,7 @@ const NewProductCard = ({ product }) => {
         <span onClick={handleOpenModal} class="close-btn">
           &times;
         </span>
-        <img width="20%" src={product?.img[0]} className="myModal-content" />
+        <img width="20%" src={product?.img} className="myModal-content" />
         <div id="caption"></div>
       </div>
       {/* light box modal start */}
