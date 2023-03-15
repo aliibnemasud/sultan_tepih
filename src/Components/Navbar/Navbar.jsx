@@ -39,9 +39,9 @@ export const Navbar = () => {
                             <a href="/contact" className="nav-link">KONTAKT</a>
                         </li>
 
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                             <a href="/dashboard" className="nav-link">DASHBOARD</a>
-                        </li>
+                        </li> */}
                     </ul>
                
             </div>

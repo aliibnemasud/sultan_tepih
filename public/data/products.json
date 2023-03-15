@@ -266,7 +266,7 @@
         ], 
       "specs": ["white", "black", "grey"], 
       "img": ["/img/products/11.webp"], 
-      "colors": ["C.Beige", "D.Beige"], 
+      "colors": ["#C7A68B", "D.Beige"], 
       "category": ["Kitchen", "Living-room","Bedroom","Bathroom","Hall"],
       "collection": "DIZAYN",
       "sizes": ["200*290", "160*225", "133*190", "0,80 - 0,60"], 
