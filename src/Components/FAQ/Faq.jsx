@@ -2,7 +2,7 @@ import React from 'react'
 
 export const Faq = () => {
   return (
-    <div className="container-fluid text-center">
+    <div className="container-fluid text-center my-5 py-5">
         <h2>Frequently Asked Questions</h2>
         
         <div className="accordion accordion-flush w-75 align-content-center d-inline-block " id="accordionFlushExample">

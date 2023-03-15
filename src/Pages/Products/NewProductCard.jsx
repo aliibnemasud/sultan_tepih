@@ -16,10 +16,10 @@ const NewProductCard = ({ product }) => {
   };
 
   return (
-    <div className="product-card col-lg-3 col-6 col-md-4 my-3">
+    <div className="product-card col-lg-3 col-6 col-md-4 my-3 p-5">
       <div className="card-content rounded">
         <div className="card-image">
-          <img onClick={() => navigate(`/product-details/${product?.id}`)} src={product?.img[0]} className="img-fluid text-center" alt="" />
+          <img onClick={() => navigate(`/product-details/${product?.id}`)} style={{objectFit: 'cover'}} height="500px" src={product?.img[0]} className=" w-100 text-center" alt="" />
 
           {/*  <ReactImageMagnify
             {...{
@@ -74,16 +74,16 @@ const NewProductCard = ({ product }) => {
 
       {/* product details modal */}
 
-      <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalToggleLabel">
+      <div className="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h1 className="modal-title fs-5" id="exampleModalToggleLabel">
                 Product Details
               </h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body text-center">
+            <div className="modal-body text-center">
               <img width="80%" src={product?.img} alt="" />
               <div className="text-left">
                 <h3 className="fw-bold my-2">Boje</h3>
@@ -92,7 +92,7 @@ const NewProductCard = ({ product }) => {
                 })}
               </div>
             </div>
-            <div class="modal-footer"></div>
+            <div className="modal-footer"></div>
           </div>
         </div>
       </div>
@@ -102,7 +102,7 @@ const NewProductCard = ({ product }) => {
       {/* light box modal start */}
 
       <div onClick={handleOpenModal} className={`my-modal ${openModal}`}>
-        <span onClick={handleOpenModal} class="close-btn">
+        <span onClick={handleOpenModal} className="close-btn">
           &times;
         </span>
         <img width="20%" src={product?.img} className="myModal-content" />

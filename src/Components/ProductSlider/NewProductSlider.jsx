@@ -22,22 +22,21 @@ function SamplePrevArrow(props) {
 }
 
 class NewProductSlider extends Component {
-  /* loadProducts = () => {
-    const { isLoading, error, data } = useQuery("productData", () => axios.get("/data/products.json"));
-    const products = data?.data;
-  }; */
 
-  state = { products: [], newProducts: [], openModal: "", pdImg: "", active: "featured" };
+  state = { products: [], newProducts: [], openModal: "", pdImg: "", active: "featured", discountPd: [], featuredPd: []};
 
   navigate = (prop) => {
     window.location.href = `/product-details/${prop}`;
   };
 
   async componentDidMount() {
-    await axios.get("/data/products.json").then((res) => this.setState({ products: res.data }));
+    await axios.get("/data/products.json")
+    .then((res) => {
+      this.setState({ products: res.data })      
+    });
 
     function parseDate(input) {
-      var parts = input.match(/(\d+)/g); // note parts[1]-1
+      var parts = input.match(/(\d+)/g); 
       return new Date(parts[2], parts[1] - 1, parts[0]);
     }
 
@@ -49,9 +48,26 @@ class NewProductSlider extends Component {
 
     this.setState({
       newProducts: newestProduct,
-    });
+      featuredPd: this.featuredProduct(this.state.products),
+      discountPd: this.discountProduct(this.state.products),
+    })
+ 
+  }
 
-    console.log(newestProduct);
+  // discount product
+  discountProduct = (products) => {
+   let discountProduct =  products.filter(product  => product.discount == 0)
+    this.setState({
+      discountPd: discountProduct 
+    })    
+  };
+  // setDiscount(disc)
+
+  featuredProduct = (products) => {
+    let feat = products.filter(product  => product.featured == 1)
+    this.setState({
+      featuredPd: feat
+    }) 
   }
 
   changeState = (props) => {
@@ -103,15 +119,9 @@ class NewProductSlider extends Component {
           },
         },
       ],
-    };
+    }; 
 
-    let loadSlider;
-
-    if (this.state.active === "newest-products") {
-      loadSlider = this.state.newProducts;
-    } else {
-      loadSlider = this.state.products;
-    }
+    // console.log(this.state.products)    
 
     return (
       <div className="text-center container mt-5">
@@ -129,10 +139,10 @@ class NewProductSlider extends Component {
         <Slider {...settings} className="row">
           {this.state.products.map((product) => {
             return (
-              <div className="product-card col-lg-3 my-3">
+              <div key={product?.id} className="product-card col-lg-3 my-3">
                 <div className="card-content rounded">
                   <div className="card-image">
-                    <GlassMagnifier                    
+                    {/* <GlassMagnifier                                   
                       imageSrc={product.img[0]}
                       allowOverflow={true}
                       imageAlt="Example"
@@ -148,9 +158,9 @@ class NewProductSlider extends Component {
                           });
                         }
                       }}
-                    />
+                    /> */}
                     {/* normar image */}
-                    {/* <img src={product.img[0]} alt="" className="w-100 img-fluid" /> */}
+                    <img src={product.img[0]} alt="" height="400px" style={{objectFit: 'cover'}} className="w-100" />
 
                    {/*  <ReactImageMagnify
                       {...{
@@ -188,18 +198,27 @@ class NewProductSlider extends Component {
                       </button>
 
                       <span className="d-flex flex-row flex-wrap fs-5 align-items-end">
-                        Boje:{" "}
+                        Boje:
                         {product?.colors?.map((color, index) => {
                           return <span key={index} className="rounded-circle ms-1 mb-2" style={{ color: color, background: color, width: "15px", height: "15px" }}></span>;
                         })}
                       </span>
                     </div>
                   </div>
-                  <div onClick={() => this.navigate(`${product?.id}`)} className="d-flex w-100 py-3 justify-content-between px-3" >
+                  <div onClick={() => this.navigate(`${product?.id}`)} className="py-3" >
                     <h6>
-                      <span className="fw-bold text-danger">Kolekcija: </span>
-                      {product?.category}
+                      <span className="fw-bold text-danger">Kolekcija:</span>                     
                     </h6>
+                    <div className="my-2">
+                      {
+                        product?.category?.map(cat => {
+                          return <span className="badge text-bg-info mx-1">{cat}</span> 
+                        })
+                      }                                       
+                    </div>
+
+
+
                     <h6>
                       <span className="fw-bold text-danger">Kod: </span> {product?.code}
                     </h6>

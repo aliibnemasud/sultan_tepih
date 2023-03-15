@@ -144,7 +144,7 @@ export const ProductDetails = () => {
             {/* light box modal start */}
 
             <div onClick={handleOpenModal} className={`my-modal ${openModal}`}>
-              <span onClick={handleOpenModal} class="close-btn">
+              <span onClick={handleOpenModal} className="close-btn">
                 &times;
               </span>
               <img width="20%" src={product?.img[0]} className="myModal-content" />

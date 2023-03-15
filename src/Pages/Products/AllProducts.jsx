@@ -22,11 +22,6 @@ const AllProducts = () => {
 
   //
 
-  
-
-
-
-
   if (isLoading) return <h1>Loading....</h1>;
 
   const sortProducts = () => {};
@@ -76,9 +71,9 @@ const AllProducts = () => {
       </div>
 
       <nav aria-label="...">
-        <ul class="pagination">
-          <li class="page-item">
-            <button onClick={() => setPage(page - 1)} class="page-link" href="#" tabindex="-1">
+        <ul className="pagination">
+          <li className="page-item">
+            <button onClick={() => setPage(page - 1)} className="page-link" href="#" tabindex="-1">
               Previous
             </button>
           </li>
@@ -86,19 +81,19 @@ const AllProducts = () => {
           {[...Array(pageCount).keys()].map((number) => {
             return (
               <li className={`page-item ${page === number + 1 ? "active" : ""}`}>
-                <button onClick={() => setPage(number + 1)} class="page-link " href="#">
+                <button onClick={() => setPage(number + 1)} className="page-link " href="#">
                   {number + 1}
                 </button>
               </li>
             );
           })}
-          <li class="page-item">
-            <button onClick={() => setPage(page + 1)} class="page-link" href="#">
+          <li className="page-item">
+            <button onClick={() => setPage(page + 1)} className="page-link" href="#">
               Next
             </button>
           </li>
 
-          <select onChange={(e) => setSize(e.target.value)} class="custom-select mx-2" id="inputGroupSelect01">
+          <select onChange={(e) => setSize(e.target.value)} className="custom-select mx-2" id="inputGroupSelect01">
             <option selected>Size</option>
             <option value="5">5</option>
             <option value="10">10</option>

@@ -48,7 +48,7 @@ const ProductPage = () => {
 
   return (
     <div>
-      <aside class={`vertical-nav ${toggleBar} px-3 border-right`} id="sidebar">
+      <aside className={`vertical-nav ${toggleBar} px-3 border-right`} id="sidebar">
         {/* <!-- CATEGORY  --> */}
         <div>
           <h4 className="mb-2 mt-5">Kategorije</h4>
@@ -119,13 +119,13 @@ const ProductPage = () => {
         </button>
       </aside>
 
-      <section class={`page-content p-3 ${toggleBar}`} id="content">
+      <section className={`page-content p-3 ${toggleBar}`} id="content">
         <ProductPopup show={showImage} modalProductData={modalProductData} onHide={() => setShowImage(false)} />
 
         <div className="d-flex justify-content-between align-items-center p-3">
           <div className="d-flex gap-3">
             <div>
-              <button onClick={sidebarCollapse} type="button" class="btn mb-3">                
+              <button onClick={sidebarCollapse} type="button" className="btn mb-3">                
                 {toggleBar == 'active' ? <FaArrowRight className="text-primary fw-bold"/> : <FaArrowLeft className="text-primary fw-bold"/>
                 }
               </button>
@@ -186,9 +186,9 @@ const ProductPage = () => {
 
         {/* pagination */}
         <nav aria-label="...">
-          <ul class="pagination">
-            <li class="page-item">
-              <button onClick={() => setPage(page - 1)} class="page-link" href="#" tabindex="-1">
+          <ul className="pagination">
+            <li className="page-item">
+              <button onClick={() => setPage(page - 1)} className="page-link" href="#" tabindex="-1">
                 Previous
               </button>
             </li>
@@ -196,19 +196,19 @@ const ProductPage = () => {
             {[...Array(pageCount).keys()].map((number) => {
               return (
                 <li className={`page-item ${page === number + 1 ? "active" : ""}`}>
-                  <button onClick={() => setPage(number + 1)} class="page-link " href="#">
+                  <button onClick={() => setPage(number + 1)} className="page-link " href="#">
                     {number + 1}
                   </button>
                 </li>
               );
             })}
-            <li class="page-item">
-              <button onClick={() => setPage(page + 1)} class="page-link" href="#">
+            <li className="page-item">
+              <button onClick={() => setPage(page + 1)} className="page-link" href="#">
                 Next
               </button>
             </li>
 
-            <select onChange={(e) => setSize(e.target.value)} class="custom-select mx-2" id="inputGroupSelect01">
+            <select onChange={(e) => setSize(e.target.value)} className="custom-select mx-2" id="inputGroupSelect01">
               <option selected>5</option>
               <option value="5">5</option>
               <option value="10">10</option>

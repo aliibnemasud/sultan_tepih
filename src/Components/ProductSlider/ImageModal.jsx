@@ -5,7 +5,7 @@ const ImageModal = ({changeState,openModal, img}) => {
 
   return (
     <div className={`my-modal ${active}`}>
-      <span onClick={changeState} class="close-btn">
+      <span onClick={changeState} className="close-btn">
         &times;
       </span>
       <img width="20%" src={img} className="myModal-content" />

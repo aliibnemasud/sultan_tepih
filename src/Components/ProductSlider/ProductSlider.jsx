@@ -15,7 +15,7 @@ export const ProductSlider = () => {
     const [newProd, setNewProd] = useState(null);
 
 
-    const responsive = {
+const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
     breakpoint: { max: 4000, min: 3000 },
@@ -124,10 +124,10 @@ export const ProductSlider = () => {
                         keyBoardControl={true}
                         customTransition="all .5"
                         transitionDuration={500}
-                        containerClass="carousel-container"
+                        containerclassName="carousel-container"
                         // removeArrowOnDeviceType={["tablet", "mobile"]}
-                        dotListClass="custom-dot-list-style"
-                        itemClass=""
+                        dotListclassName="custom-dot-list-style"
+                        itemclassName=""
                         itemAriaLabel="se"
                         className='col-12'
                         >
@@ -159,10 +159,10 @@ export const ProductSlider = () => {
                         keyBoardControl={true}
                         customTransition="all .5"
                         transitionDuration={500}
-                        containerClass="carousel-container"
+                        containerclassName="carousel-container"
                         // removeArrowOnDeviceType={["tablet", "mobile"]}
-                        dotListClass="custom-dot-list-style"
-                        itemClass=""
+                        dotListclassName="custom-dot-list-style"
+                        itemclassName=""
                         itemAriaLabel="lg"
                         >
                         {discount ? discount.map( product => {
@@ -193,10 +193,10 @@ export const ProductSlider = () => {
                         keyBoardControl={false}
                         customTransition="all .5"
                         transitionDuration={500}
-                        containerClass="carousel-container"
+                        containerclassName="carousel-container"
                         // removeArrowOnDeviceType={["tablet", "mobile"]}
-                        dotListClass="custom-dot-list-style"
-                        itemClass=""
+                        dotListclassName="custom-dot-list-style"
+                        itemclassName=""
                         itemAriaLabel="as"
                         >
                         {newProd ? newProd.map( product => {

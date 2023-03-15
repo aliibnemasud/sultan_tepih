@@ -9,14 +9,14 @@ const PostProducts = () => {
 
       <div className="d-flex gap-4 my-3">
         <div className="w-100">
-          <label for="exampleFormControlInput1" class="form-label">
+          <label for="exampleFormControlInput1" className="form-label">
             Product title
           </label>
-          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="product title" />
+          <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="product title" />
         </div>
         <div className="w-100">
-          <label class="form-label">Product Code</label>
-          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="1471A" />
+          <label className="form-label">Product Code</label>
+          <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="1471A" />
         </div>
       </div>
 
@@ -64,16 +64,16 @@ const PostProducts = () => {
         </div>
       </div>
 
-      <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">
+      <div className="mb-3">
+        <label for="exampleFormControlTextarea1" className="form-label">
           Description
         </label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
       </div>
 
       <div>
-        <label class="form-label">Add product images</label>
-        <input class="form-control form-control-lg" id="formFileSm" type="file" />
+        <label className="form-label">Add product images</label>
+        <input className="form-control form-control-lg" id="formFileSm" type="file" />
       </div>
 
       <button className="btn btn-primary btn-lg my-5 w-50 mx-auto d-block">Add Products</button>

@@ -1,7 +1,6 @@
 .sliderImage {    
     height: 80vh;
-    object-fit: cover;
-    
+    object-fit: cover;    
 }
 
 .bgShadow {
