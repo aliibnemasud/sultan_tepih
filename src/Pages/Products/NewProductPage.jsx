@@ -10,9 +10,19 @@ import axios from "axios";
 import { Form } from "react-bootstrap";
 import { ProductCard } from "../../Components/ProductCard/ProductCard";
 import NewProductCard from "./NewProductCard";
+import { filterProductsByListOfCollection } from "../../Hook/filterProductFunction";
 
 const NewProductPage = () => {
   const [toggleBar, setToggleBar] = useState("");
+
+  // Filter By Checkbox
+  const [collection, setCollection] = useState({
+    collectionName: [],
+    response: [],
+  });
+  
+  const [filterProduct, setFilterProduct] = useState([])
+
   const { isLoading, error, data } = useQuery("productData", () => axios.get("/data/products.json"));
   const products = data?.data;
   const [page, setPage] = useState(1);
@@ -26,9 +36,26 @@ const NewProductPage = () => {
   const [sortByPrice, setSortByPrice] = useState([]);
   const [dateValue, setDateValue] = useState("");
   const [sortByDate, setSortByDate] = useState([]);
+  
+  
 
   // Load Products
-  let loadProducts = products;
+ 
+
+  
+
+  // Filter products
+  const filterProducts = () => {  
+    let filterProductsByCollection = filterProductsByListOfCollection(products, collection.collectionName)    
+    setFilterProduct(filterProductsByCollection)    
+  };
+
+  let loadProducts;
+  if(filterProduct.length > 0){
+   loadProducts = filterProduct 
+  } else {
+    loadProducts = products;
+  }
 
   //  pagination
   const totalProducts = loadProducts?.length;
@@ -43,11 +70,6 @@ const NewProductPage = () => {
   const [colMd, setCol] = useState("");
   const [smCol, setColSm] = useState("");
   const [sideBar, setSideBar] = useState("");
-
-  const handleCategoryChange = () => {};
-  const handleSizeChange = () => {};
-  const handleColorChange = () => {};
-  const filterProducts = () => {};
 
   useEffect(() => {
     if (dateValue === "lowToHigh") {
@@ -65,7 +87,7 @@ const NewProductPage = () => {
   }, [products, loadProducts, pricingValue, dateValue]);
 
   // Sorting by date
-
+  console.log(loadProducts);
   function parseDate(input) {
     var parts = input.match(/(\d+)/g); // note parts[1]-1
     return new Date(parts[2], parts[1] - 1, parts[0]);
@@ -130,6 +152,21 @@ const NewProductPage = () => {
     }
   };
 
+  const collectionsFilter = (e) => {
+    const { value, checked } = e.target;
+    if (checked) {
+      setCollection({
+        collectionName: [...collection?.collectionName, value],
+        response: [...collection?.response, value],
+      });
+    } else {
+      setCollection({
+        collectionName: collection?.collectionName.filter((e) => e !== value),
+        response: collection?.response.filter((e) => e !== value),
+      });
+    }
+  };
+
   return (
     <section className="container-fluid productPage">
       <div className="row">
@@ -161,7 +198,8 @@ const NewProductPage = () => {
               {filterContent?.collection?.map((collection) => {
                 return (
                   <div className="form-check">
-                    <input className="form-check-input" type="checkbox" value={collection} id={collection} />
+                    <input className="form-check-input" onChange={collectionsFilter} type="checkbox" value={collection} id={collection} />
+
                     <label className="form-check-label" htmlFor="flexCheckDefault1">
                       {collection}
                     </label>
@@ -218,13 +256,15 @@ const NewProductPage = () => {
                 {/* <button onClick={sidebarCollapse} type="button" className="btn mb-3">
                   {toggleBar === "active" ? <FaArrowRight className="text-primary fw-bold" /> : <FaBars className="text-primary fw-bold" />}
                 </button> */}
+
                 <button type="button" onClick={handleSideBar} className="btn btn-lite btn-lg text-danger" id="sidebarButton">
-                  <FaTasks />                  
+                  <FaTasks />
                 </button>
               </div>
 
               <div>
                 <h2 className="mobileViewText mt-2">Svi Proizvodi</h2>
+
                 {/* <p className="text-primary fw-bold">{currentProducts?.length} Proizvoda</p> */}
               </div>
             </div>
@@ -255,7 +295,7 @@ const NewProductPage = () => {
           <nav aria-label="" className="mb-3">
             <ul className="pagination justify-content-center">
               <li className="page-item">
-                <button onClick={() => setPage(page - 1)} className="page-link" href="#" tabindex="-1">
+                <button onClick={() => setPage(page - 1)} className="page-link" href="#" tabIndex="-1">
                   Previous
                 </button>
               </li>

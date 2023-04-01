@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { FaEye, FaInfoCircle, FaSearchPlus } from "react-icons/fa";
-import ReactImageMagnify from "react-image-magnify";
+import { FaEye, FaInfoCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import "./ProductCard.css";
 
@@ -16,25 +15,10 @@ const NewProductCard = ({ product }) => {
   };
 
   return (
-    <div className="product-card col-lg-3 col-6 col-md-4 my-3 p-5">
+    <div className="product-card col-lg-3 col-12 col-md-4 my-3">
       <div className="card-content rounded">
         <div className="card-image">
           <img onClick={() => navigate(`/product-details/${product?.id}`)} style={{objectFit: 'cover'}} height="500px" src={product?.img[0]} className=" w-100 text-center" alt="" />
-
-          {/*  <ReactImageMagnify
-            {...{
-              smallImage: {
-                alt: "Wristwatch by Ted Baker London",
-                isFluidWidth: true,
-                src: product?.img[0],
-              },
-              largeImage: {
-                src: product?.img[0],
-                width: 1200,
-                height: 1800,
-              },
-            }}
-          /> */}
 
           <div className="card-bottom py-2 w-100 d-flex justify-content-around align-items-center">
             <button onClick={handleOpenModal} className="btn btn-lite text-danger">
@@ -64,7 +48,7 @@ const NewProductCard = ({ product }) => {
         </div>
         <div className="d-flex flex-wrap w-100 py-3 justify-content-between px-3" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">
           <h5 className="mobileViewText">
-            <span className="fw-bold text-danger">Kolekcija:</span> {product?.collection}
+            <span className="fw-bold text-danger">Collections:</span> {product?.collection}
           </h5>
           <h5 className="mobileViewText">
             <span className="fw-bold text-danger">Kod:</span> {product?.code}

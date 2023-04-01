@@ -12,8 +12,7 @@
     height: 80vh;
     position: relative;
     background: linear-gradient(90deg, rgba(0, 0, 0, .7), rgba(0, 0, 0, 0.01) ), url("../../Images/background.png");
-    background-image: cover;
-     
+    background-image: cover;     
 }
 
 .carousel-item-div {

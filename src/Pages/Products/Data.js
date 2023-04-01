@@ -11,3 +11,5 @@ export const filterContent = {
     ],
     size: ["115x110", "115x75", "110x110"],
 };
+
+

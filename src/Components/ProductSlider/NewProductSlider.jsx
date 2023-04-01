@@ -1,15 +1,10 @@
 import axios from "axios";
 import React, { Component } from "react";
-import { FaArrowCircleLeft, FaArrowCircleRight, FaEye, FaInfoCircle, FaSearchPlus } from "react-icons/fa";
+import { FaEye, FaInfoCircle } from "react-icons/fa";
 import Slider from "react-slick";
 import ImageModal from "./ImageModal";
 import "./Slider.css";
-import ReactImageMagnify from 'react-image-magnify';
 
-import { Magnifier, GlassMagnifier, SideBySideMagnifier, PictureInPictureMagnifier, MOUSE_ACTIVATION, TOUCH_ACTIVATION } from "react-image-magnifiers";
-import PdDetailsModal from "./PdDetailsModal";
-
-// import '../../Pages/Products/ProductCard.css';
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -116,6 +111,7 @@ class NewProductSlider extends Component {
           settings: {
             slidesToShow: 1,
             slidesToScroll: 1,
+            dots: false,
           },
         },
       ],
@@ -159,7 +155,7 @@ class NewProductSlider extends Component {
                         }
                       }}
                     /> */}
-                    {/* normar image */}
+                    {/* normal image */}
                     <img src={product.img[0]} alt="" height="400px" style={{objectFit: 'cover'}} className="w-100" />
 
                    {/*  <ReactImageMagnify
@@ -207,7 +203,7 @@ class NewProductSlider extends Component {
                   </div>
                   <div onClick={() => this.navigate(`${product?.id}`)} className="py-3" >
                     <h6>
-                      <span className="fw-bold text-danger">Kolekcija:</span>                     
+                      <span className="fw-bold text-danger">Collections:</span>                     
                     </h6>
                     <div className="my-2">
                       {
@@ -216,9 +212,6 @@ class NewProductSlider extends Component {
                         })
                       }                                       
                     </div>
-
-
-
                     <h6>
                       <span className="fw-bold text-danger">Kod: </span> {product?.code}
                     </h6>
