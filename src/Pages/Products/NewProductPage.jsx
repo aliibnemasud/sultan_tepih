@@ -1,14 +1,13 @@
 import React, { useEffect } from "react";
 import { filterContent } from "./Data";
 import ProductPopup from "./ProductPopup";
-import { FaArrowLeft, FaArrowRight, FaBars, FaFilter, FaList, FaTasks } from "react-icons/fa";
-import { AiOutlineBars } from "react-icons/ai";
+import { FaTasks } from "react-icons/fa";
 import "./ShopPage.css";
 import { useState } from "react";
 import { useQuery } from "react-query";
 import axios from "axios";
 import { Form } from "react-bootstrap";
-import { ProductCard } from "../../Components/ProductCard/ProductCard";
+
 import NewProductCard from "./NewProductCard";
 import { filterProductsByListOfCollection } from "../../Hook/filterProductFunction";
 
@@ -39,10 +38,7 @@ const NewProductPage = () => {
   
   
 
-  // Load Products
- 
-
-  
+  // Load Products  
 
   // Filter products
   const filterProducts = () => {  

@@ -30,3 +30,21 @@ export const priceOption = [
    { value: '458', label: '458' },
 
 ]
+
+export const collectionOption = [
+    {value: 'OPERA', label: 'OPERA'},
+    {value: 'MODERN COLLECTION', label: 'MODERN COLLECTION'},
+    {value: 'DIZAYN', label: 'DIZAYN'},
+    {value: 'PLAZA', label: 'PLAZA'},
+    {value: 'ŠPAGASTI', label: 'ŠPAGASTI'},
+    {value: 'BAMBOO', label: 'BAMBOO'},
+    {value: 'FLORA', label: 'FLORA'},
+    {value: 'WENICE', label: 'WENICE'},
+    {value: 'HEREKE', label: 'HEREKE'},
+    {value: 'LOTUS', label: 'LOTUS'},
+    {value: 'SOFT', label: 'SOFT'},
+    {value: 'IRAN COLLECTION', label: 'IRAN COLLECTION'},
+    {value: 'ZARA', label: 'ZARA'},
+    {value: 'SARAJ', label: 'SARAJ'},
+    {value: 'SARAJ COLLECTION', label: 'SARAJ COLLECTION'}
+]

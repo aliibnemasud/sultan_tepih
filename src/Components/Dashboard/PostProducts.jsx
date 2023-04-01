@@ -1,6 +1,6 @@
 import React from "react";
 import Select from "react-select";
-import { categoryOption, colourOptions, priceOption, sizeOption } from "./addProductData";
+import { categoryOption, collectionOption, colourOptions as colorOptions, priceOption, sizeOption } from "./addProductData";
 
 const PostProducts = () => {
   return (
@@ -25,7 +25,7 @@ const PostProducts = () => {
           <label htmlFor="" className="form-label">
             Product Color
           </label>
-          <Select isMulti name="colors" options={colourOptions} className="basic-multi-select" classNamePrefix="select" />
+          <Select isMulti name="colors" options={colorOptions} className="basic-multi-select" classNamePrefix="select" />
         </div>
         <div className="w-100">
           <label htmlFor="" className="form-label">
@@ -45,7 +45,7 @@ const PostProducts = () => {
           <label htmlFor="" className="form-label">
             Collection
           </label>
-          <Select defaultValue={[colourOptions[2], colourOptions[3]]} isMulti name="colors" options={colourOptions} className="basic-multi-select" classNamePrefix="select" />
+          <Select defaultValue={[colorOptions[2], colorOptions[3]]} isMulti name="colors" options={collectionOption} className="basic-multi-select" classNamePrefix="select" />
         </div>
       </div>
 
@@ -60,7 +60,7 @@ const PostProducts = () => {
           <label htmlFor="" className="form-label">
             Color Options
           </label>
-          <Select defaultValue={[colourOptions[2], colourOptions[3]]} isMulti name="colors" options={colourOptions} className="basic-multi-select" classNamePrefix="select" />
+          <Select defaultValue={[colorOptions[2], colorOptions[3]]} isMulti name="colors" options={colorOptions} className="basic-multi-select" classNamePrefix="select" />
         </div>
       </div>
 

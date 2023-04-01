@@ -10,6 +10,7 @@ import { ProductDetails } from "./Pages/ProductDetails/ProductDetails";
 import ProductPage from "./Pages/Products/ProductPage";
 import NewProductPage from "./Pages/Products/NewProductPage";
 import NewShopPage from "./Pages/Products/NewShopPage";
+import Dashboard from "./Components/Dashboard/Dashboard";
 
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
           <Route path="/shop" element={<NewProductPage />} />
           <Route path="/oldPage" element={<ProductPage />} />
           <Route path="/newPage" element={<NewShopPage/>} />
-          {/* <Route path="/dashboard" element={<Dashboard/>} /> */}
+          <Route path="/dashboard" element={<Dashboard/>} />
           {/* <Route
             path="/products"
             element={<Products category={""} collection={""} />}
