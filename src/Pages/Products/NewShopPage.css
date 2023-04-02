@@ -53,3 +53,6 @@
   margin-top: 10%;
 }
 
+.cardImage {
+  max-height: 500px;
+}

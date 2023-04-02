@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Faq } from "../../Components/FAQ/Faq";
 import { ProductSlider } from "../../Components/ProductSlider/ProductSlider";
-import NewProductSlider from "../../Components/ProductSlider/NewProductSlider";
+import NewProductSliderProDetails from "../../Components/ProductSlider/NewProductSliderProDetails";
 
 export const ProductDetails = () => {
   const [product, setProduct] = useState(null);
@@ -157,7 +157,7 @@ export const ProductDetails = () => {
         )}
       </div>
 
-      <NewProductSlider />
+      <NewProductSliderProDetails />
       <Faq />
     </>
   );

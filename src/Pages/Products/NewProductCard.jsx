@@ -15,10 +15,10 @@ const NewProductCard = ({ product }) => {
   };
 
   return (
-    <div className="product-card col-lg-3 col-12 col-md-4 my-3">
+    <div className="product-card col-lg-3 col-6 col-md-4 my-3">
       <div className="card-content rounded">
         <div className="card-image">
-          <img onClick={() => navigate(`/product-details/${product?.id}`)} style={{objectFit: 'cover'}} height="500px" src={product?.img[0]} className=" w-100 text-center" alt="" />
+          <img onClick={() => navigate(`/product-details/${product?.id}`)} style={{objectFit: 'cover' }}  src={product?.img[0]} className="w-100 text-center cardImage" alt="" />
 
           <div className="card-bottom py-2 w-100 d-flex justify-content-around align-items-center">
             <button onClick={handleOpenModal} className="btn btn-lite text-danger">

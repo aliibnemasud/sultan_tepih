@@ -38,7 +38,7 @@ const NewProductPage = () => {
   const { isLoading, error, data } = useQuery("productData", () => axios.get("/data/products.json"));
   const products = data?.data;
   const [page, setPage] = useState(1);
-  const [size, setSize] = useState(10);
+  const [size, setSize] = useState(12);
 
   const [showImage, setShowImage] = useState(false);
   const [modalProductData, setModalProductData] = useState("");
@@ -200,9 +200,6 @@ const NewProductPage = () => {
     }
   };
 
-
-
-
   return (
     <section className="container-fluid productPage">
       <div className="row">
@@ -249,7 +246,7 @@ const NewProductPage = () => {
               <ul className="list-unstyled">
                 {filterContent?.color?.map((color) => {
                   return (
-                    <li className="d-inline m-1 ">
+                    <li className="d-inline m-1">
                       <input className={`form-check-input rounded-circle ${color?.code} p-3`} type="checkbox" value={color?.name} id="flexCheckDefault11" />
                     </li>
                   );

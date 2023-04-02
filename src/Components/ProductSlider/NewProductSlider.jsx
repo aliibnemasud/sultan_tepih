@@ -52,7 +52,7 @@ class NewProductSlider extends Component {
     this.setState({
       featuredPd: [],
       discountPd: discountProduct      
-    })    
+    })
   };
 
   // setDiscount(disc)
