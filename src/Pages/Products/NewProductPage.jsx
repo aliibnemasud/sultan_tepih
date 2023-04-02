@@ -50,17 +50,34 @@ const NewProductPage = () => {
   const [sortByDate, setSortByDate] = useState([]);   
 
   // Filter products
-  const filterProducts = () => {  
-    /* let filterProductsByCollection = filterProductsByListOfCollection(products, collection.collectionName)   */ 
+  const filterProducts = () => {
+    
+    // Single product
+    /* let filterProductsByCollection = filterProductsByListOfCollection(products, collection.collectionName) */
+
+    if(categoryFilter?.category.length === 0 && collection?.collectionName.length === 0 && sizeF?.size.length === 0 ){
+      alert('Please, Select at least one filter')
+      return 
+    }
+
     let filterProductsByCollection = allFilterCollection(products, categoryFilter?.category, collection?.collectionName, sizeF?.size)
-    setFilterProduct(filterProductsByCollection)
+
+    if(categoryFilter?.category.length > 0 || collection?.collectionName.length > 0 || sizeF?.size.length > 0){      
+      setFilterProduct(filterProductsByCollection)
+      setSideBar("0")
+      
+    }
+    if(filterProductsByCollection.length === 0){
+      alert('No Product found!')      
+    }
+       
   };
 
   console.log(filterProduct)
 
   let loadProducts;
   if(filterProduct.length > 0){
-   loadProducts = filterProduct 
+   loadProducts = filterProduct; 
   } else {
     loadProducts = products;
   }
@@ -319,7 +336,7 @@ const NewProductPage = () => {
           <section className="products row py-2">
             {currentProducts
               ? currentProducts?.map((product) => {
-                  return <NewProductCard product={product} setModalProductData={setModalProductData} setShowImage={setShowImage} />;
+                  return <NewProductCard product={product} key={product?.id} setModalProductData={setModalProductData} setShowImage={setShowImage} />;
                 })
               : "Trenutno nemamo proizvode koje ste tražili"}
           </section>
