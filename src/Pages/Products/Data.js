@@ -1,5 +1,5 @@
 export const filterContent = {
-    category: ["DNEVNI BORAVAK", "KUHINJA", "SPAVAĆA SOBA", "KUPATILO", "HODNIK", "Kitchen","Living-room","Bedroom","Bathroom","Hall", "Hall2"],
+    category: ["DNEVNI BORAVAK", "KUHINJA", "SPAVAĆA SOBA", "KUPATILO", "HODNIK", "Kitchen","Living-room","Bedroom","Bathroom","Hall", "Hall2", "Hall3"],
     collection: ["OPERA", "MODERN COLLECTION", "DIZAYN", "PLAZA", "ŠPAGASTI", "BAMBOO", "WENICE", "FLORA", "HEREKE", "LOTUS", "SOFT", "IRAN COLLECTION", "ZARA", "SARAJ", "SARAJ COLLECTION"],
     color: [
       { name: "black", code: "bg-dark" },
