@@ -9,7 +9,7 @@ import axios from "axios";
 import { Form } from "react-bootstrap";
 
 import NewProductCard from "./NewProductCard";
-import { filterProductsByListOfCollection } from "../../Hook/filterProductFunction";
+import { allFilterCollection, filterProductsByListOfCollection } from "../../Hook/filterProductFunction";
 
 const NewProductPage = () => {
   const [toggleBar, setToggleBar] = useState("");
@@ -17,8 +17,21 @@ const NewProductPage = () => {
   // Filter By Checkbox
   const [collection, setCollection] = useState({
     collectionName: [],
-    response: [],
+    response: [],    
   });
+
+  // Filter By Checkbox
+  const [categoryFilter, setCategoryFilter] = useState({    
+    category: [],
+  });
+  // Filter By Checkbox
+  const [sizeF, setSizeF] = useState({    
+    size:[]
+  });
+
+  // console.log(sizeF)
+
+//  console.log(collection)
   
   const [filterProduct, setFilterProduct] = useState([])
 
@@ -34,17 +47,16 @@ const NewProductPage = () => {
   const [pricingValue, setPricingValue] = useState("");
   const [sortByPrice, setSortByPrice] = useState([]);
   const [dateValue, setDateValue] = useState("");
-  const [sortByDate, setSortByDate] = useState([]);
-  
-  
-
-  // Load Products  
+  const [sortByDate, setSortByDate] = useState([]);   
 
   // Filter products
   const filterProducts = () => {  
-    let filterProductsByCollection = filterProductsByListOfCollection(products, collection.collectionName)    
-    setFilterProduct(filterProductsByCollection)    
+    /* let filterProductsByCollection = filterProductsByListOfCollection(products, collection.collectionName)   */ 
+    let filterProductsByCollection = allFilterCollection(products, categoryFilter?.category, collection?.collectionName, sizeF?.size)
+    setFilterProduct(filterProductsByCollection)
   };
+
+  console.log(filterProduct)
 
   let loadProducts;
   if(filterProduct.length > 0){
@@ -83,7 +95,6 @@ const NewProductPage = () => {
   }, [products, loadProducts, pricingValue, dateValue]);
 
   // Sorting by date
-  console.log(loadProducts);
   function parseDate(input) {
     var parts = input.match(/(\d+)/g); // note parts[1]-1
     return new Date(parts[2], parts[1] - 1, parts[0]);
@@ -163,6 +174,35 @@ const NewProductPage = () => {
     }
   };
 
+  const categoryFilterOnchange = (e) => {
+    const { value, checked } = e.target;
+    if (checked) {
+      setCategoryFilter({
+        category: [...categoryFilter?.category, value],       
+      });
+    } else {
+      setCategoryFilter({
+        category: categoryFilter?.category.filter((e) => e !== value),        
+      });
+    }
+  };
+
+  const sizeFilterOnchange = (e) => {
+    const { value, checked } = e.target;
+    if (checked) {
+      setSizeF({
+        size: [...sizeF?.size, value],       
+      });
+    } else {
+      setSizeF({
+        size: sizeF?.size.filter((e) => e !== value),        
+      });
+    }
+  };
+
+
+
+
   return (
     <section className="container-fluid productPage">
       <div className="row">
@@ -178,7 +218,7 @@ const NewProductPage = () => {
               {filterContent?.category?.map((cat) => {
                 return (
                   <div className="form-check">
-                    <input className="form-check-input" type="checkbox" value={cat} id={cat} />
+                    <input className="form-check-input" onChange={categoryFilterOnchange} type="checkbox" value={cat} id={cat} />
                     <label className="form-check-label" htmlFor="flexCheckDefault1">
                       {cat}
                     </label>
@@ -227,7 +267,7 @@ const NewProductPage = () => {
                 {filterContent?.size?.map((size) => {
                   return (
                     <div className="form-check ms-3">
-                      <input className="form-check-input" type="checkbox" value={size} id="flexCheckDefault17" />
+                      <input className="form-check-input" onChange={sizeFilterOnchange} type="checkbox" value={size} id="flexCheckDefault17" />
                       <label className="form-check-label" htmlFor="flexCheckDefault17">
                         {size}
                       </label>

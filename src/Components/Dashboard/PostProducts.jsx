@@ -34,6 +34,7 @@ const PostProducts = () => {
           <Select defaultValue={[priceOption[0]]} isMulti name="colors" options={priceOption} className="basic-multi-select" classNamePrefix="select" />
         </div>
       </div>
+      
       <div className="d-flex gap-4 my-3">
         <div className="w-100">
           <label htmlFor="" className="form-label">

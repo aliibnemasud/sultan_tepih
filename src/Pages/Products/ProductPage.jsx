@@ -188,7 +188,7 @@ const ProductPage = () => {
         <nav aria-label="...">
           <ul className="pagination">
             <li className="page-item">
-              <button onClick={() => setPage(page - 1)} className="page-link" href="#" tabindex="-1">
+              <button onClick={() => setPage(page - 1)} className="page-link" href="#" tabIndex="-1">
                 Previous
               </button>
             </li>

@@ -18,7 +18,7 @@
       "colors": ["Ivory", "Light gray"], 
       "category": ["Kitchen", "Living-room","Bedroom","Bathroom","Hall"],
       "collection": "OPERA",
-      "sizes": ["200*290", "160*225", "133*190", "0,80 - 0,60"], 
+      "sizes": [ "110x110","200*290", "160*225", "133*190", "0,80 - 0,60"], 
       "featured": "0",
       "discount": "1",
       "discountPrice": "0.2",
