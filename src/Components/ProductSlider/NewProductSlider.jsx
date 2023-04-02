@@ -42,34 +42,41 @@ class NewProductSlider extends Component {
     });
 
     this.setState({
-      newProducts: newestProduct,
-      featuredPd: this.featuredProduct(this.state.products),
-      discountPd: this.discountProduct(this.state.products),
-    })
- 
+      newProducts: newestProduct
+    }) 
   }
 
   // discount product
   discountProduct = (products) => {
-   let discountProduct =  products.filter(product  => product.discount == 0)
+   let discountProduct =  products.filter(product  => product.discount === "0")
     this.setState({
-      discountPd: discountProduct 
+      featuredPd: [],
+      discountPd: discountProduct      
     })    
   };
-  // setDiscount(disc)
 
-  featuredProduct = (products) => {
-    let feat = products.filter(product  => product.featured == 1)
+  // setDiscount(disc)
+  featuredProduct = (products) => {     
+    let feat = products.filter(product  => product.featured === "1")    
     this.setState({
-      featuredPd: feat
+      featuredPd: feat,
+      discountPd: [] 
     }) 
-  }
+  }  
 
   changeState = (props) => {
     this.setState({ openModal: props });
   };
 
   onDiscount = (e) => {
+
+    if(e.target.id === "on-discount"){
+      this.discountProduct(this.state.products)
+    }
+    if(e.target.id === "featured"){
+      this.featuredProduct(this.state.products)
+    }    
+
     this.setState({
       active: e.target.id,
     });
@@ -115,14 +122,23 @@ class NewProductSlider extends Component {
           },
         },
       ],
-    }; 
+    };
 
-    // console.log(this.state.products)    
+    let loadProducts = this.state.products;
+
+    if(this.state.discountPd.length > 0){
+      loadProducts = this.state.discountPd 
+    }
+    if(this.state.featuredPd.length > 0){
+      loadProducts = this.state.featuredPd 
+    }
+
+    // console.log(this.state.discountPd, this.state.featuredPd)
 
     return (
       <div className="text-center container mt-5">
         <div>
-          <button id="on-discount" onClick={this.onDiscount} className={`btn ${this.state.active === "on-discount" ? "btn-danger" : ""} px-3 py-2 mx-2 rounded`}>
+          <button id="on-discount" onClick={this.onDiscount}  className={`btn ${this.state.active === "on-discount" ? "btn-danger" : ""} px-3 py-2 mx-2 rounded`}>
             On discount
           </button>
           <button id="featured" onClick={this.onDiscount} className={`btn ${this.state.active == "featured" ? "btn-danger" : ""} px-3 py-2 mx-2 rounded`}>
@@ -133,7 +149,7 @@ class NewProductSlider extends Component {
           </button>
         </div>
         <Slider {...settings} className="row">
-          {this.state.products.map((product) => {
+          {loadProducts.map((product) => {
             return (
               <div key={product?.id} className="product-card col-lg-3 my-3">
                 <div className="card-content rounded">

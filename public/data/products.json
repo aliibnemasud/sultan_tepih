@@ -44,7 +44,7 @@
       "category": ["Kitchen", "Living-room","Bedroom","Bathroom","Hall"],
       "collection": "OPERA",
       "sizes": ["200*290", "160*225", "133*190", "0,80 - 0,60"], 
-      "featured": "1",
+      "featured": "0",
       "discount": "1",
       "discountPrice": "0.2",
       "createdAt": "12.09.2022"
@@ -94,8 +94,8 @@
       "category": ["Kitchen", "Living-room","Bedroom","Bathroom","Hall"],
       "collection": "OPERA",
       "sizes": ["200*290", "160*225", "133*190", "0,80 - 0,60"], 
-      "featured": "1",
-      "discount": "1",
+      "featured": "0",
+      "discount": "0",
       "discountPrice": "0.2",
       "createdAt": "12.09.2022"
   },
@@ -120,7 +120,7 @@
       "collection": "OPERA",
       "sizes": ["200*290", "160*225", "133*190", "0,80 - 0,60"], 
       "featured": "1",
-      "discount": "1",
+      "discount": "0",
       "discountPrice": "0.2",
       "createdAt": "12.09.2022"
   },
@@ -221,7 +221,7 @@
       "collection": "DIZAYN",
       "sizes": ["200*290", "160*225", "133*190", "0,80 - 0,60"], 
       "featured": "1",
-      "discount": "1",
+      "discount": "0",
       "discountPrice": "0.2",
       "createdAt": "12.09.2022"
   },
@@ -246,7 +246,7 @@
       "collection": "DIZAYN",
       "sizes": ["200*290", "160*225", "133*190", "0,80 - 0,60"], 
       "featured": "1",
-      "discount": "1",
+      "discount": "0",
       "discountPrice": "0.2",
       "createdAt": "12.09.2022"
   },
