@@ -9,7 +9,7 @@ import axios from "axios";
 import { Form } from "react-bootstrap";
 
 import NewProductCard from "./NewProductCard";
-import { allFilterCollection, filterProductsByListOfCollection } from "../../Hook/filterProductFunction";
+import { allFilterCollection } from "../../Hook/filterProductFunction";
 
 const NewProductPage = () => {
   const [toggleBar, setToggleBar] = useState("");
@@ -29,9 +29,6 @@ const NewProductPage = () => {
     size:[]
   });
 
-  // console.log(sizeF)
-
-//  console.log(collection)
   
   const [filterProduct, setFilterProduct] = useState([])
 
@@ -62,7 +59,9 @@ const NewProductPage = () => {
 
     let filterProductsByCollection = allFilterCollection(products, categoryFilter?.category, collection?.collectionName, sizeF?.size)
 
-    if(categoryFilter?.category.length > 0 || collection?.collectionName.length > 0 || sizeF?.size.length > 0){      
+    console.log(filterProductsByCollection)
+
+    if(categoryFilter?.category.length > 0 || collection?.collectionName.length > 0 || sizeF?.size.length > 0){
       setFilterProduct(filterProductsByCollection)
       setSideBar("0")
       
