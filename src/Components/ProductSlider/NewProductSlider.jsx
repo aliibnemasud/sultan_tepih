@@ -5,7 +5,6 @@ import Slider from "react-slick";
 import ImageModal from "./ImageModal";
 import "./Slider.css";
 
-
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return <div className={`${className} d-none d-lg-block bg-danger p-0`} style={{ ...style, display: "block", color: "red" }} onClick={onClick}></div>;
@@ -17,21 +16,19 @@ function SamplePrevArrow(props) {
 }
 
 class NewProductSlider extends Component {
-
-  state = { products: [], newProducts: [], openModal: "", pdImg: "", active: "featured", discountPd: [], featuredPd: []};
+  state = { products: [], newProducts: [], openModal: "", pdImg: "", active: "featured", discountPd: [], featuredPd: [] };
 
   navigate = (prop) => {
     window.location.href = `/product-details/${prop}`;
   };
 
   async componentDidMount() {
-    await axios.get("/data/products.json")
-    .then((res) => {
-      this.setState({ products: res.data })      
+    await axios.get("/data/products.json").then((res) => {
+      this.setState({ products: res.data });
     });
 
     function parseDate(input) {
-      var parts = input.match(/(\d+)/g); 
+      var parts = input.match(/(\d+)/g);
       return new Date(parts[2], parts[1] - 1, parts[0]);
     }
 
@@ -42,40 +39,39 @@ class NewProductSlider extends Component {
     });
 
     this.setState({
-      newProducts: newestProduct
-    }) 
+      newProducts: newestProduct,
+    });
   }
 
   // discount product
   discountProduct = (products) => {
-   let discountProduct =  products.filter(product  => product.discount === "0")
+    let discountProduct = products.filter((product) => product.discount === "0");
     this.setState({
       featuredPd: [],
-      discountPd: discountProduct      
-    })
+      discountPd: discountProduct,
+    });
   };
 
   // setDiscount(disc)
-  featuredProduct = (products) => {     
-    let feat = products.filter(product  => product.featured === "1")    
+  featuredProduct = (products) => {
+    let feat = products.filter((product) => product.featured === "1");
     this.setState({
       featuredPd: feat,
-      discountPd: [] 
-    }) 
-  }  
+      discountPd: [],
+    });
+  };
 
   changeState = (props) => {
     this.setState({ openModal: props });
   };
 
   onDiscount = (e) => {
-
-    if(e.target.id === "on-discount"){
-      this.discountProduct(this.state.products)
+    if (e.target.id === "on-discount") {
+      this.discountProduct(this.state.products);
     }
-    if(e.target.id === "featured"){
-      this.featuredProduct(this.state.products)
-    }    
+    if (e.target.id === "featured") {
+      this.featuredProduct(this.state.products);
+    }
 
     this.setState({
       active: e.target.id,
@@ -126,11 +122,11 @@ class NewProductSlider extends Component {
 
     let loadProducts = this.state.products;
 
-    if(this.state.discountPd.length > 0){
-      loadProducts = this.state.discountPd 
+    if (this.state.discountPd.length > 0) {
+      loadProducts = this.state.discountPd;
     }
-    if(this.state.featuredPd.length > 0){
-      loadProducts = this.state.featuredPd 
+    if (this.state.featuredPd.length > 0) {
+      loadProducts = this.state.featuredPd;
     }
 
     // console.log(this.state.discountPd, this.state.featuredPd)
@@ -138,7 +134,7 @@ class NewProductSlider extends Component {
     return (
       <div className="text-center container mt-5">
         <div>
-          <button id="on-discount" onClick={this.onDiscount}  className={`btn ${this.state.active === "on-discount" ? "btn-danger" : ""} px-3 py-2 mx-2 rounded`}>
+          <button id="on-discount" onClick={this.onDiscount} className={`btn ${this.state.active === "on-discount" ? "btn-danger" : ""} px-3 py-2 mx-2 rounded`}>
             On discount
           </button>
           <button id="featured" onClick={this.onDiscount} className={`btn ${this.state.active == "featured" ? "btn-danger" : ""} px-3 py-2 mx-2 rounded`}>
@@ -172,9 +168,9 @@ class NewProductSlider extends Component {
                       }}
                     /> */}
                     {/* normal image */}
-                    <img src={product.img[0]} alt="" height="400px" style={{objectFit: 'cover'}} className="w-100" />
+                    <img src={product.img[0]} alt="" height="400px" style={{ objectFit: "cover" }} className="w-100" />
 
-                   {/*  <ReactImageMagnify
+                    {/*  <ReactImageMagnify
                       {...{
                         smallImage: {
                             alt: 'Wristwatch by Ted Baker London',
@@ -217,27 +213,26 @@ class NewProductSlider extends Component {
                       </span>
                     </div>
                   </div>
-                  <div onClick={() => this.navigate(`${product?.id}`)} className="py-3" >
+                  <div onClick={() => this.navigate(`${product?.id}`)} className="py-3 d-flex justify-content-between px-3">
                     <h6>
-                      <span className="fw-bold text-danger">Collections:</span>                     
+                      <span className="fw-bold text-danger">Kolekcije: </span> {product?.collection}
                     </h6>
-                    <div className="my-2">
+                    
+                    {/* <div className="my-2">
                       {
                         product?.category?.map(cat => {
                           return <span className="badge text-bg-info mx-1">{cat}</span> 
                         })
                       }                                       
-                    </div>
+                    </div> */}
+
                     <h6>
                       <span className="fw-bold text-danger">Kod: </span> {product?.code}
                     </h6>
                   </div>
                 </div>
-                
               </div>
             );
-
-            
           })}
         </Slider>
 

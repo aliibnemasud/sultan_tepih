@@ -46,6 +46,7 @@ const NewProductCard = ({ product }) => {
             </span>
           </div>
         </div>
+        
         <div className="d-flex flex-wrap w-100 py-3 justify-content-between px-3" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">
           <h5 className="mobileViewText">
             <span className="fw-bold text-danger">Collections:</span> {product?.collection}
@@ -54,6 +55,7 @@ const NewProductCard = ({ product }) => {
             <span className="fw-bold text-danger">Kod:</span> {product?.code}
           </h5>
         </div>
+
       </div>
 
       {/* product details modal */}
