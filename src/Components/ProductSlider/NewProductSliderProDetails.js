@@ -67,7 +67,7 @@ class NewProductSliderProDetails extends Component {
               <div key={product?.id} className="product-card col-lg-3 my-3">
                 <div className="card-content rounded">
                   <div className="card-image">
-                    <img src={product.img[0]} alt="" height="400px" style={{ objectFit: "cover" }} className="w-100" />
+                    <img onClick={() => this.navigate(`${product?.id}`)} src={product.img[0]} alt="" height="400px" style={{ objectFit: "cover" }} className="w-100" />
                     <div className="card-bottom py-2 w-100 d-flex justify-content-around align-items-center">
                       <button
                         onClick={() => {
@@ -96,15 +96,19 @@ class NewProductSliderProDetails extends Component {
                       </span>
                     </div>
                   </div>
-                  <div onClick={() => this.navigate(`${product?.id}`)} className="py-3">
+                  <div onClick={() => this.navigate(`${product?.id}`)} className="py-3 d-flex justify-content-between px-3">
                     <h6>
-                      <span className="fw-bold text-danger">Collections:</span>
+                      <span className="fw-bold text-danger">Kolekcije: </span> {product?.collection}
                     </h6>
-                    <div className="my-2">
-                      {product?.category?.map((cat) => {
-                        return <span className="badge text-bg-info mx-1">{cat}</span>;
-                      })}
-                    </div>
+                    
+                    {/* <div className="my-2">
+                      {
+                        product?.category?.map(cat => {
+                          return <span className="badge text-bg-info mx-1">{cat}</span> 
+                        })
+                      }                                       
+                    </div> */}
+
                     <h6>
                       <span className="fw-bold text-danger">Kod: </span> {product?.code}
                     </h6>
