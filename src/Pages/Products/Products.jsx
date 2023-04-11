@@ -26,7 +26,7 @@ export const Products = ({category, collection}) => {
                 productsData = [...products];
             }
         }
-        // console.log('sort', productsData);
+      
         let selected = document.querySelector('#sorting').value;
         // eslint-disable-next-line eqeqeq
         if(selected == 0) {
@@ -86,7 +86,7 @@ export const Products = ({category, collection}) => {
     }
 
     useEffect(() => {
-        // console.log('');
+        
     }, [products, sortProducts])
 
     const setProductsF = async(prod) =>{
@@ -118,16 +118,13 @@ export const Products = ({category, collection}) => {
                 }
                 await setProductsF(p);
                 setProductCount(p.length);
-                // console.log('get', products);
             })
-            .then(() => {
-                // console.log('get sort', products);
-                // setProductCount(products.length);
+            .then(() => {              
                 sortProducts(products);
             })
             .catch(
             function(err){
-                console.log(err, ' error')
+                console.log(err)
             }
             );
     }, [category, collection, setProducts]);
@@ -181,7 +178,7 @@ export const Products = ({category, collection}) => {
 
             if(color.length > 0){
                 // let temp = [];
-                console.log(color.length);
+                //console.log(color.length);
                 if(color.length <= 1){
                     let p = tempData.filter(product  => product.colors.includes(color[0]));
                     tempProd = [...tempProd, ...p];
@@ -189,7 +186,7 @@ export const Products = ({category, collection}) => {
                     tempData = [...data];
                     color.forEach(colorItem => {
                         let p = tempData.filter(product  => product.colors.includes(colorItem));
-                        console.log(tempProd);
+                        //console.log(tempProd);
                         // temp = [...temp, ...p];
                         tempProd = [...tempProd, ...p];
                     });

@@ -81,7 +81,7 @@ const responsive = {
                 loadFeatSLider();
             }).catch(
                 function(err){
-                    console.log(err, ' error')
+                    // console.log(err, ' error')
                 }
             )
     }, []);

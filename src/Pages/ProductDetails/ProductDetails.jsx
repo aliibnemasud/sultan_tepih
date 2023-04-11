@@ -32,7 +32,7 @@ export const ProductDetails = () => {
         }
       })
       .catch(function (err) {
-        console.log(err, " error");
+        // console.log(err, " error");
       });
   }, [id]);
 

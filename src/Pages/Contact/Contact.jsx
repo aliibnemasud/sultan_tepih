@@ -1,17 +1,44 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { SmallThumbnail } from '../../Components/SmallThumbnail/SmallThumbnail'
 import { useForm, ValidationError } from '@formspree/react';
+import emailjs from '@emailjs/browser';
 import { SmallLocationCard } from '../../Components/Locations/SmallLocationCard';
 import "./Contact.css"
+import axios from 'axios';
 
 export const Contact = () => {
-  const [state, handleSubmit] = useForm("myyldape");
+  // const [state, handleSubmit] = useForm("myyldape");
+
+  const form = useRef();
+
+  const nameRef = useRef();
+  const phoneRef = useRef();
+  const emailRef = useRef();
+  const messageRef = useRef();
+
+  const sendEmail = async (e) => {
+    e.preventDefault();
+
+    const message = {
+      name: nameRef.current.value,
+      phone: phoneRef.current.value,
+      email: emailRef.current.value,
+      message: messageRef.current.value
+    }
+
+    await axios.post('https://sultan-server.onrender.com/message', message)
+    .then(res => {
+      alert('Email Sent successfully!')
+      // console.log(res)
+    })
+  };
 
   return (
     <div id="bodyBg">
       <SmallThumbnail img={"./img/landing-carpet.jpg"}/>
 
-      <form className="container text-start rounded p-4 my-5 border rounded" onSubmit={handleSubmit} style={{"background": "white"}}>
+      <form className="container text-start rounded p-4 my-5 border rounded" onSubmit={sendEmail} style={{"background": "white"}}>
+
         <div className="form-table mt-3">
           <div className="container">
               <div className="col-xs-12 pb-3">
@@ -19,26 +46,26 @@ export const Contact = () => {
                   <div className="row">
                       <div className="col-xs-12 col-sm-6">
                           <div className=" form-floating text-muted">
-                              <input className="form-control" name="name" type="text" id="fullName"  placeholder="Ime i Prezime" required/>
+                              <input className="form-control" name="name" ref={nameRef} type="text" id="fullName"  placeholder="Ime i Prezime" required/>
                               <label htmlFor="fullName">Ime i Prezime</label>
                           </div>
                           <div className=" form-floating text-muted">
-                              <input className="form-control"name="phone" type="tel" id="phoneNumber"  placeholder="Broj Telefona" required/>
+                              <input className="form-control"name="phone" ref={phoneRef} type="tel" id="phoneNumber"  placeholder="Broj Telefona" required/>
                               <label htmlFor="phoneNumber">Broj Telefona</label>
                           </div>
                           <div className="form-floating text-muted">
-                              <input className="form-control" name="email" type="email" id="email" placeholder="E-mail" required/>
+                              <input className="form-control" name="email" ref={emailRef} type="email" id="email" placeholder="E-mail" required/>
                               <label htmlFor="email">E-Mail</label>
                           </div>
                       </div>
                       
                       <div className="col-xs-12 col-sm-6">
                           <div className="form-floating text-muted">
-                              <textarea className="form-control" name="message" id="message" placeholder="Message" style={{"minHeight": "117px"}} required></textarea>
+                              <textarea className="form-control" name="message" ref={messageRef} id="message" placeholder="Message" style={{"minHeight": "117px"}} required></textarea>
                               <label htmlFor="message">Poruka</label>
                           </div>
                           
-                          <button className="btn btn-danger justify-content-center float-end" type="button">Pošalji</button>
+                          <button type="submit" className="btn btn-danger justify-content-center float-end" >Pošalji</button>
                       
                       </div>
                     </div>

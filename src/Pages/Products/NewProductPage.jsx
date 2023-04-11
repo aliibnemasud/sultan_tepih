@@ -59,7 +59,6 @@ const NewProductPage = () => {
 
     let filterProductsByCollection = allFilterCollection(products, categoryFilter?.category, collection?.collectionName, sizeF?.size)
 
-    console.log(filterProductsByCollection)
 
     if(categoryFilter?.category.length > 0 || collection?.collectionName.length > 0 || sizeF?.size.length > 0){
       setFilterProduct(filterProductsByCollection)
@@ -71,8 +70,6 @@ const NewProductPage = () => {
     }
        
   };
-
-  console.log(filterProduct)
 
   let loadProducts;
   if(filterProduct.length > 0){
@@ -230,7 +227,7 @@ const NewProductPage = () => {
               <h4 className="mb-2">Kategorije</h4>
               {filterContent?.category?.map((cat) => {
                 return (
-                  <div className="form-check">
+                  <div key={cat} className="form-check">
                     <input className="form-check-input" onChange={categoryFilterOnchange} type="checkbox" value={cat} id={cat} />
                     <label className="form-check-label" htmlFor="flexCheckDefault1">
                       {cat}
@@ -246,7 +243,7 @@ const NewProductPage = () => {
               <h4 className="mt-4 mb-2">Kolekcije</h4>
               {filterContent?.collection?.map((collection) => {
                 return (
-                  <div className="form-check">
+                  <div key={collection} className="form-check">
                     <input className="form-check-input" onChange={collectionsFilter} type="checkbox" value={collection} id={collection} />
 
                     <label className="form-check-label" htmlFor="flexCheckDefault1">
@@ -258,12 +255,12 @@ const NewProductPage = () => {
             </div>
 
             <div className="checkbox">
-              <h3 className=" ">Boja</h3>
+              <h3 >Boja</h3>
               <ul className="list-unstyled">
-                {filterContent?.color?.map((color) => {
+                {filterContent?.color?.map((color, i) => {
                   return (
-                    <li className="d-inline m-1">
-                      <input className={`form-check-input rounded-circle ${color?.code} p-3`} type="checkbox" value={color?.name} id="flexCheckDefault11" />
+                    <li key={i} className="d-inline m-1">
+                      <input key={color} className={`form-check-input rounded-circle ${color?.code} p-3`} type="checkbox" value={color?.name} id="flexCheckDefault11" />
                     </li>
                   );
                 })}
@@ -279,7 +276,7 @@ const NewProductPage = () => {
 
                 {filterContent?.size?.map((size) => {
                   return (
-                    <div className="form-check ms-3">
+                    <div key={size} className="form-check ms-3">
                       <input className="form-check-input" onChange={sizeFilterOnchange} type="checkbox" value={size} id="flexCheckDefault17" />
                       <label className="form-check-label" htmlFor="flexCheckDefault17">
                         {size}
@@ -349,9 +346,9 @@ const NewProductPage = () => {
                 </button>
               </li>
 
-              {[...Array(pageCount).keys()].map((number) => {
+              {[...Array(pageCount).keys()].map((number,i) => {
                 return (
-                  <li className={`page-item ${page === number + 1 ? "active" : ""}`}>
+                  <li key={i} className={`page-item ${page === number + 1 ? "active" : ""}`}>
                     <button onClick={() => setPage(number + 1)} className="page-link " href="#">
                       {number + 1}
                     </button>
