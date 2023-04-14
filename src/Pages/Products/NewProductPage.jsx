@@ -12,7 +12,6 @@ import NewProductCard from "./NewProductCard";
 import { allFilterCollection } from "../../Hook/filterProductFunction";
 
 const NewProductPage = () => {
-  const [toggleBar, setToggleBar] = useState("");
 
   // Filter By Checkbox
   const [collection, setCollection] = useState({
@@ -70,22 +69,15 @@ const NewProductPage = () => {
   };
 
 
+  // Getting data from parameter
   const params = new Proxy(new URLSearchParams(window.location.search), {
     get: (searchParams, prop) => searchParams.get(prop),
   }); 
-
-  let value = params.collection;
+  let value = params?.collection;
 
   let queryFilter = products?.filter(pd => pd.collection === value)
-  
-  
-  console.log(queryFilter)
-
-  
-
   let loadProducts;
 
-  
   if(filterProduct?.length > 0){
     queryFilter = []
    loadProducts = filterProduct; 
@@ -104,11 +96,7 @@ const NewProductPage = () => {
   const indexOfFirstPost = indexOfLastPost - size;
   const currentProducts = loadProducts?.slice(indexOfFirstPost, indexOfLastPost);
 
-  // Making sidebar responsive
-  const [md, setMd] = useState("d-md-none");
-  const [dSm, setDSm] = useState("d-none");
-  const [colMd, setCol] = useState("");
-  const [smCol, setColSm] = useState("");
+ 
   const [sideBar, setSideBar] = useState("");
 
   useEffect(() => {
@@ -150,30 +138,7 @@ const NewProductPage = () => {
 
   if (isLoading) return <h1>Loading....</h1>;
 
-  // Toggle bar
-  const sidebarCollapse = () => {
-    if (toggleBar === "") {
-      setToggleBar("active");
-
-      // Display medium screen
-      setMd("d-md-block");
-      setCol("col-md-10");
-
-      // for small screen
-      setDSm("d-block");
-      setColSm("col-10");
-    } else {
-      // Display medium screen
-      setMd("d-md-none");
-      setCol("");
-
-      // for small screen
-      setDSm("d-none");
-      setColSm("");
-
-      setToggleBar("");
-    }
-  };
+  
 
   if (sortByDate.length > 0) {
     loadProducts = sortByDate;
@@ -378,15 +343,7 @@ const NewProductPage = () => {
                 <button onClick={() => setPage(page + 1)} className="page-link" href="#">
                   Next
                 </button>
-              </li>
-
-              {/* products */}
-              {/* <select onChange={(e) => setSize(e.target.value)} className="custom-select mx-2" id="inputGroupSelect01">
-                <option selected>5</option>
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="15">15</option>
-              </select> */}
+              </li>             
             </ul>
           </nav>
           {/* pagination */}

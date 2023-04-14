@@ -30,7 +30,7 @@ export const Contact = () => {
     .then(res => {
       alert('Email Sent successfully!')
       // console.log(res)
-    })
+    }).catch(err => console.log(err))
   };
 
   return (
