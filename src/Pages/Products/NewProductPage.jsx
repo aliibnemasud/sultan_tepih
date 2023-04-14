@@ -47,11 +47,9 @@ const NewProductPage = () => {
   const [sortByDate, setSortByDate] = useState([]);   
 
   // Filter products
-  const filterProducts = () => {
-    
+  const filterProducts = () => {    
     // Single product
     /* let filterProductsByCollection = filterProductsByListOfCollection(products, collection.collectionName) */
-
     if(categoryFilter?.category.length === 0 && collection?.collectionName.length === 0 && sizeF?.size.length === 0 ){
       alert('Please, Select at least one filter')
       return 
@@ -71,11 +69,32 @@ const NewProductPage = () => {
        
   };
 
+
+  const params = new Proxy(new URLSearchParams(window.location.search), {
+    get: (searchParams, prop) => searchParams.get(prop),
+  }); 
+
+  let value = params.collection;
+
+  let queryFilter = products?.filter(pd => pd.collection === value)
+  
+  
+  console.log(queryFilter)
+
+  
+
   let loadProducts;
-  if(filterProduct.length > 0){
+
+  
+  if(filterProduct?.length > 0){
+    queryFilter = []
    loadProducts = filterProduct; 
   } else {
     loadProducts = products;
+  }
+
+  if(queryFilter?.length > 0){
+    loadProducts = queryFilter;
   }
 
   //  pagination
