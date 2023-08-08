@@ -1,10 +1,10 @@
-# Getting Started with Create React App
+## SULTAN TEPIH - A Carpet Selling Website
 
-Sultan [Live](https://github.com/facebook/create-react-app).
+* People can choose their carpet and can order from this website.
+* You can filter by your category you want. 
+* You can stock products like a warehouse and show them in this website.
+* Used Technologies: React, Firebase, React Router, Mongodb, Node js, Express js, Image magnifiers, React Query, Slider, Bootstrap, etc.
 
-## Available Scripts
+Live [link](https://sultan-tepih-iifi.vercel.app)
 
-In the project directory, you can run:
-
-### `npm start`
 
